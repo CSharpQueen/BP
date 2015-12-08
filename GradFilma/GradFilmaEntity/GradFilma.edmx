@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GradFilmaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="idFilm" />
+          </Key>
+          <Property Name="idFilm" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="reziser" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="glumci" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="opis" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karta">
+          <Key>
+            <PropertyRef Name="idKarta" />
+          </Key>
+          <Property Name="idKarta" Type="int" Nullable="false" />
+          <Property Name="RezervacijaId" Type="int" Nullable="false" />
+          <Property Name="barkod" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KinoSala">
+          <Key>
+            <PropertyRef Name="idKinoSala" />
+          </Key>
+          <Property Name="idKinoSala" Type="int" Nullable="false" />
+          <Property Name="brojSale" Type="int" Nullable="false" />
+          <Property Name="brojMjesta" Type="int" Nullable="false" />
+          <Property Name="tipMjesta" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TipMjestaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="idKorisnik" />
+          </Key>
+          <Property Name="idKorisnik" Type="int" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="jmbg" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Privilegije">
+          <Key>
+            <PropertyRef Name="idPrivilegije" />
+          </Key>
+          <Property Name="idPrivilegije" Type="int" Nullable="false" />
+          <Property Name="ulogaId" Type="int" Nullable="false" />
+          <Property Name="manipulacijaKorisnicima" Type="int" />
+          <Property Name="manipulacijaPodacima" Type="int" />
+          <Property Name="manipulacijaRezervacijama" Type="int" />
+          <Property Name="manipulacijaSadrzajem" Type="int" />
+          <Property Name="manipulacijaUposlenicima" Type="int" />
+          <Property Name="registracija" Type="int" />
+        </EntityType>
+        <EntityType Name="Projekcija">
+          <Key>
+            <PropertyRef Name="idProjekcija" />
+          </Key>
+          <Property Name="idProjekcija" Type="int" Nullable="false" />
+          <Property Name="vrijemePrikazivanja" Type="datetime" Nullable="false" />
+          <Property Name="tipProjekcijeId" Type="int" Nullable="false" />
+          <Property Name="filmId" Type="int" Nullable="false" />
+          <Property Name="kinoSalaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezervacija">
+          <Key>
+            <PropertyRef Name="idRezervacije" />
+          </Key>
+          <Property Name="idRezervacije" Type="int" Nullable="false" />
+          <Property Name="brojMjesta" Type="int" Nullable="false" />
+          <Property Name="cijena" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="specijalnaPonudaId" Type="int" Nullable="false" />
+          <Property Name="projekcijaId" Type="int" Nullable="false" />
+          <Property Name="uposlenikId" Type="int" />
+          <Property Name="korisnikId" Type="int" />
+        </EntityType>
+        <EntityType Name="SpecijalnePonude">
+          <Key>
+            <PropertyRef Name="idSpecPonude" />
+          </Key>
+          <Property Name="idSpecPonude" Type="int" Nullable="false" />
+          <Property Name="maxiComboPaket" Type="varchar" MaxLength="5" />
+          <Property Name="midiComboPaket" Type="varchar" MaxLength="5" />
+          <Property Name="miniComboPaket" Type="varchar" MaxLength="5" />
+          <Property Name="ladyPaket" Type="varchar" MaxLength="5" />
+          <Property Name="lovePaket" Type="varchar" MaxLength="5" />
+          <Property Name="studentDay" Type="varchar" MaxLength="5" />
+          <Property Name="familyDay" Type="varchar" MaxLength="5" />
+          <Property Name="workDay" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="StavkePrivilegije">
+          <Key>
+            <PropertyRef Name="idStavkePrivilegije" />
+          </Key>
+          <Property Name="idStavkePrivilegije" Type="int" Nullable="false" />
+          <Property Name="privilegijaId" Type="int" Nullable="false" />
+          <Property Name="dodavanjeKorisnika" Type="int" />
+          <Property Name="brisanjeKorisnika" Type="int" />
+          <Property Name="rezervacija" Type="int" />
+          <Property Name="otkazivanjeRezervacije" Type="int" />
+          <Property Name="rezervacijaDodatnogSadrzaja" Type="int" />
+          <Property Name="dodavanjeUposlenika" Type="int" />
+          <Property Name="brisanjeUposlenika" Type="int" />
+          <Property Name="registracija" Type="int" />
+          <Property Name="dodavanjeSadrzaja" Type="int" />
+          <Property Name="brisanjeSadrzaja" Type="int" />
+        </EntityType>
+        <EntityType Name="TipMjesta">
+          <Key>
+            <PropertyRef Name="idTipMjesta" />
+          </Key>
+          <Property Name="idTipMjesta" Type="int" Nullable="false" />
+          <Property Name="mjestoZaParove" Type="int" />
+          <Property Name="mjestoZaOsobeSaInv" Type="int" />
+          <Property Name="mjesto" Type="int" />
+        </EntityType>
+        <EntityType Name="TipProjekcije">
+          <Key>
+            <PropertyRef Name="idTipProjekcije" />
+          </Key>
+          <Property Name="idTipProjekcije" Type="int" Nullable="false" />
+          <Property Name="2D" Type="int" />
+          <Property Name="3D" Type="int" />
+          <Property Name="4D" Type="int" />
+        </EntityType>
+        <EntityType Name="Uloga">
+          <Key>
+            <PropertyRef Name="idUloga" />
+          </Key>
+          <Property Name="idUloga" Type="int" Nullable="false" />
+          <Property Name="administrator" Type="int" />
+          <Property Name="upravnik" Type="int" />
+          <Property Name="menadzer" Type="int" />
+        </EntityType>
+        <EntityType Name="Uposlenik">
+          <Key>
+            <PropertyRef Name="idUposlenik" />
+          </Key>
+          <Property Name="idUposlenik" Type="int" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="jmbg" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ulogaId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Karta_Rezervacija">
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="1" />
+          <End Role="Karta" Type="Self.Karta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezervacija">
+              <PropertyRef Name="idRezervacije" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="RezervacijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KinoSala_TipMjesta">
+          <End Role="TipMjesta" Type="Self.TipMjesta" Multiplicity="1" />
+          <End Role="KinoSala" Type="Self.KinoSala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipMjesta">
+              <PropertyRef Name="idTipMjesta" />
+            </Principal>
+            <Dependent Role="KinoSala">
+              <PropertyRef Name="TipMjestaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Privilegije_StavkePriv">
+          <End Role="Privilegije" Type="Self.Privilegije" Multiplicity="1" />
+          <End Role="Privilegije1" Type="Self.Privilegije" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Privilegije">
+              <PropertyRef Name="idPrivilegije" />
+            </Principal>
+            <Dependent Role="Privilegije1">
+              <PropertyRef Name="idPrivilegije" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Privilegije_Uloga">
+          <End Role="Uloga" Type="Self.Uloga" Multiplicity="1" />
+          <End Role="Privilegije" Type="Self.Privilegije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloga">
+              <PropertyRef Name="idUloga" />
+            </Principal>
+            <Dependent Role="Privilegije">
+              <PropertyRef Name="ulogaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekcija_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="1" />
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="idFilm" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="filmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekcija_KinoSala">
+          <End Role="KinoSala" Type="Self.KinoSala" Multiplicity="1" />
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KinoSala">
+              <PropertyRef Name="idKinoSala" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="kinoSalaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekcija_TipProjekcije">
+          <End Role="TipProjekcije" Type="Self.TipProjekcije" Multiplicity="1" />
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipProjekcije">
+              <PropertyRef Name="idTipProjekcije" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="tipProjekcijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="idKorisnik" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Projekcija">
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekcija">
+              <PropertyRef Name="idProjekcija" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="projekcijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Specponuda">
+          <End Role="SpecijalnePonude" Type="Self.SpecijalnePonude" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecijalnePonude">
+              <PropertyRef Name="idSpecPonude" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="specijalnaPonudaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Uposlenik">
+          <End Role="Uposlenik" Type="Self.Uposlenik" Multiplicity="0..1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uposlenik">
+              <PropertyRef Name="idUposlenik" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="uposlenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StavkePrivilegije_Privilegija">
+          <End Role="Privilegije" Type="Self.Privilegije" Multiplicity="1" />
+          <End Role="StavkePrivilegije" Type="Self.StavkePrivilegije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilegije">
+              <PropertyRef Name="idPrivilegije" />
+            </Principal>
+            <Dependent Role="StavkePrivilegije">
+              <PropertyRef Name="privilegijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uposlenik_Uloga">
+          <End Role="Uloga" Type="Self.Uloga" Multiplicity="1" />
+          <End Role="Uposlenik" Type="Self.Uposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloga">
+              <PropertyRef Name="idUloga" />
+            </Principal>
+            <Dependent Role="Uposlenik">
+              <PropertyRef Name="ulogaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GradFilmaModelStoreContainer">
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Karta" EntityType="Self.Karta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KinoSala" EntityType="Self.KinoSala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilegije" EntityType="Self.Privilegije" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projekcija" EntityType="Self.Projekcija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezervacija" EntityType="Self.Rezervacija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecijalnePonude" EntityType="Self.SpecijalnePonude" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StavkePrivilegije" EntityType="Self.StavkePrivilegije" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipMjesta" EntityType="Self.TipMjesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipProjekcije" EntityType="Self.TipProjekcije" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uloga" EntityType="Self.Uloga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uposlenik" EntityType="Self.Uposlenik" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Karta_Rezervacija" Association="Self.FK_Karta_Rezervacija">
+            <End Role="Rezervacija" EntitySet="Rezervacija" />
+            <End Role="Karta" EntitySet="Karta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoSala_TipMjesta" Association="Self.FK_KinoSala_TipMjesta">
+            <End Role="TipMjesta" EntitySet="TipMjesta" />
+            <End Role="KinoSala" EntitySet="KinoSala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Privilegije_StavkePriv" Association="Self.FK_Privilegije_StavkePriv">
+            <End Role="Privilegije" EntitySet="Privilegije" />
+            <End Role="Privilegije1" EntitySet="Privilegije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Privilegije_Uloga" Association="Self.FK_Privilegije_Uloga">
+            <End Role="Uloga" EntitySet="Uloga" />
+            <End Role="Privilegije" EntitySet="Privilegije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekcija_Film" Association="Self.FK_Projekcija_Film">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="Projekcija" EntitySet="Projekcija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekcija_KinoSala" Association="Self.FK_Projekcija_KinoSala">
+            <End Role="KinoSala" EntitySet="KinoSala" />
+            <End Role="Projekcija" EntitySet="Projekcija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekcija_TipProjekcije" Association="Self.FK_Projekcija_TipProjekcije">
+            <End Role="TipProjekcije" EntitySet="TipProjekcije" />
+            <End Role="Projekcija" EntitySet="Projekcija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Korisnik" Association="Self.FK_Rezervacija_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Rezervacija" EntitySet="Rezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Projekcija" Association="Self.FK_Rezervacija_Projekcija">
+            <End Role="Projekcija" EntitySet="Projekcija" />
+            <End Role="Rezervacija" EntitySet="Rezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Specponuda" Association="Self.FK_Rezervacija_Specponuda">
+            <End Role="SpecijalnePonude" EntitySet="SpecijalnePonude" />
+            <End Role="Rezervacija" EntitySet="Rezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Uposlenik" Association="Self.FK_Rezervacija_Uposlenik">
+            <End Role="Uposlenik" EntitySet="Uposlenik" />
+            <End Role="Rezervacija" EntitySet="Rezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StavkePrivilegije_Privilegija" Association="Self.FK_StavkePrivilegije_Privilegija">
+            <End Role="Privilegije" EntitySet="Privilegije" />
+            <End Role="StavkePrivilegije" EntitySet="StavkePrivilegije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uposlenik_Uloga" Association="Self.FK_Uposlenik_Uloga">
+            <End Role="Uloga" EntitySet="Uloga" />
+            <End Role="Uposlenik" EntitySet="Uposlenik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GradFilmaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="idFilm" />
+          </Key>
+          <Property Name="idFilm" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reziser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="glumci" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Projekcijas" Relationship="Self.FK_Projekcija_Film" FromRole="Film" ToRole="Projekcija" />
+        </EntityType>
+        <EntityType Name="Karta">
+          <Key>
+            <PropertyRef Name="idKarta" />
+          </Key>
+          <Property Name="idKarta" Type="Int32" Nullable="false" />
+          <Property Name="RezervacijaId" Type="Int32" Nullable="false" />
+          <Property Name="barkod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Rezervacija" Relationship="Self.FK_Karta_Rezervacija" FromRole="Karta" ToRole="Rezervacija" />
+        </EntityType>
+        <EntityType Name="KinoSala">
+          <Key>
+            <PropertyRef Name="idKinoSala" />
+          </Key>
+          <Property Name="idKinoSala" Type="Int32" Nullable="false" />
+          <Property Name="brojSale" Type="Int32" Nullable="false" />
+          <Property Name="brojMjesta" Type="Int32" Nullable="false" />
+          <Property Name="tipMjesta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipMjestaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipMjesta1" Relationship="Self.FK_KinoSala_TipMjesta" FromRole="KinoSala" ToRole="TipMjesta" />
+          <NavigationProperty Name="Projekcijas" Relationship="Self.FK_Projekcija_KinoSala" FromRole="KinoSala" ToRole="Projekcija" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="idKorisnik" />
+          </Key>
+          <Property Name="idKorisnik" Type="Int32" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jmbg" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Korisnik" FromRole="Korisnik" ToRole="Rezervacija" />
+        </EntityType>
+        <EntityType Name="Privilegije">
+          <Key>
+            <PropertyRef Name="idPrivilegije" />
+          </Key>
+          <Property Name="idPrivilegije" Type="Int32" Nullable="false" />
+          <Property Name="ulogaId" Type="Int32" Nullable="false" />
+          <Property Name="manipulacijaKorisnicima" Type="Int32" />
+          <Property Name="manipulacijaPodacima" Type="Int32" />
+          <Property Name="manipulacijaRezervacijama" Type="Int32" />
+          <Property Name="manipulacijaSadrzajem" Type="Int32" />
+          <Property Name="manipulacijaUposlenicima" Type="Int32" />
+          <Property Name="registracija" Type="Int32" />
+          <NavigationProperty Name="Uloga" Relationship="Self.FK_Privilegije_Uloga" FromRole="Privilegije" ToRole="Uloga" />
+          <NavigationProperty Name="StavkePrivilegijes" Relationship="Self.FK_StavkePrivilegije_Privilegija" FromRole="Privilegije" ToRole="StavkePrivilegije" />
+        </EntityType>
+        <EntityType Name="Projekcija">
+          <Key>
+            <PropertyRef Name="idProjekcija" />
+          </Key>
+          <Property Name="idProjekcija" Type="Int32" Nullable="false" />
+          <Property Name="vrijemePrikazivanja" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tipProjekcijeId" Type="Int32" Nullable="false" />
+          <Property Name="filmId" Type="Int32" Nullable="false" />
+          <Property Name="kinoSalaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Projekcija_Film" FromRole="Projekcija" ToRole="Film" />
+          <NavigationProperty Name="KinoSala" Relationship="Self.FK_Projekcija_KinoSala" FromRole="Projekcija" ToRole="KinoSala" />
+          <NavigationProperty Name="TipProjekcije" Relationship="Self.FK_Projekcija_TipProjekcije" FromRole="Projekcija" ToRole="TipProjekcije" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Projekcija" FromRole="Projekcija" ToRole="Rezervacija" />
+        </EntityType>
+        <EntityType Name="Rezervacija">
+          <Key>
+            <PropertyRef Name="idRezervacije" />
+          </Key>
+          <Property Name="idRezervacije" Type="Int32" Nullable="false" />
+          <Property Name="brojMjesta" Type="Int32" Nullable="false" />
+          <Property Name="cijena" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="specijalnaPonudaId" Type="Int32" Nullable="false" />
+          <Property Name="projekcijaId" Type="Int32" Nullable="false" />
+          <Property Name="uposlenikId" Type="Int32" />
+          <Property Name="korisnikId" Type="Int32" />
+          <NavigationProperty Name="Kartas" Relationship="Self.FK_Karta_Rezervacija" FromRole="Rezervacija" ToRole="Karta" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Rezervacija_Korisnik" FromRole="Rezervacija" ToRole="Korisnik" />
+          <NavigationProperty Name="Projekcija" Relationship="Self.FK_Rezervacija_Projekcija" FromRole="Rezervacija" ToRole="Projekcija" />
+          <NavigationProperty Name="SpecijalnePonude" Relationship="Self.FK_Rezervacija_Specponuda" FromRole="Rezervacija" ToRole="SpecijalnePonude" />
+          <NavigationProperty Name="Uposlenik" Relationship="Self.FK_Rezervacija_Uposlenik" FromRole="Rezervacija" ToRole="Uposlenik" />
+        </EntityType>
+        <EntityType Name="SpecijalnePonude">
+          <Key>
+            <PropertyRef Name="idSpecPonude" />
+          </Key>
+          <Property Name="idSpecPonude" Type="Int32" Nullable="false" />
+          <Property Name="maxiComboPaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="midiComboPaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="miniComboPaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ladyPaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="lovePaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="studentDay" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="familyDay" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="workDay" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Specponuda" FromRole="SpecijalnePonude" ToRole="Rezervacija" />
+        </EntityType>
+        <EntityType Name="StavkePrivilegije">
+          <Key>
+            <PropertyRef Name="idStavkePrivilegije" />
+          </Key>
+          <Property Name="idStavkePrivilegije" Type="Int32" Nullable="false" />
+          <Property Name="privilegijaId" Type="Int32" Nullable="false" />
+          <Property Name="dodavanjeKorisnika" Type="Int32" />
+          <Property Name="brisanjeKorisnika" Type="Int32" />
+          <Property Name="rezervacija" Type="Int32" />
+          <Property Name="otkazivanjeRezervacije" Type="Int32" />
+          <Property Name="rezervacijaDodatnogSadrzaja" Type="Int32" />
+          <Property Name="dodavanjeUposlenika" Type="Int32" />
+          <Property Name="brisanjeUposlenika" Type="Int32" />
+          <Property Name="registracija" Type="Int32" />
+          <Property Name="dodavanjeSadrzaja" Type="Int32" />
+          <Property Name="brisanjeSadrzaja" Type="Int32" />
+          <NavigationProperty Name="Privilegije" Relationship="Self.FK_StavkePrivilegije_Privilegija" FromRole="StavkePrivilegije" ToRole="Privilegije" />
+        </EntityType>
+        <EntityType Name="TipMjesta">
+          <Key>
+            <PropertyRef Name="idTipMjesta" />
+          </Key>
+          <Property Name="idTipMjesta" Type="Int32" Nullable="false" />
+          <Property Name="mjestoZaParove" Type="Int32" />
+          <Property Name="mjestoZaOsobeSaInv" Type="Int32" />
+          <Property Name="mjesto" Type="Int32" />
+          <NavigationProperty Name="KinoSalas" Relationship="Self.FK_KinoSala_TipMjesta" FromRole="TipMjesta" ToRole="KinoSala" />
+        </EntityType>
+        <EntityType Name="TipProjekcije">
+          <Key>
+            <PropertyRef Name="idTipProjekcije" />
+          </Key>
+          <Property Name="idTipProjekcije" Type="Int32" Nullable="false" />
+          <Property Name="C2D" Type="Int32" />
+          <Property Name="C3D" Type="Int32" />
+          <Property Name="C4D" Type="Int32" />
+          <NavigationProperty Name="Projekcijas" Relationship="Self.FK_Projekcija_TipProjekcije" FromRole="TipProjekcije" ToRole="Projekcija" />
+        </EntityType>
+        <EntityType Name="Uloga">
+          <Key>
+            <PropertyRef Name="idUloga" />
+          </Key>
+          <Property Name="idUloga" Type="Int32" Nullable="false" />
+          <Property Name="administrator" Type="Int32" />
+          <Property Name="upravnik" Type="Int32" />
+          <Property Name="menadzer" Type="Int32" />
+          <NavigationProperty Name="Privilegijes" Relationship="Self.FK_Privilegije_Uloga" FromRole="Uloga" ToRole="Privilegije" />
+          <NavigationProperty Name="Uposleniks" Relationship="Self.FK_Uposlenik_Uloga" FromRole="Uloga" ToRole="Uposlenik" />
+        </EntityType>
+        <EntityType Name="Uposlenik">
+          <Key>
+            <PropertyRef Name="idUposlenik" />
+          </Key>
+          <Property Name="idUposlenik" Type="Int32" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jmbg" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ulogaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Uposlenik" FromRole="Uposlenik" ToRole="Rezervacija" />
+          <NavigationProperty Name="Uloga" Relationship="Self.FK_Uposlenik_Uloga" FromRole="Uposlenik" ToRole="Uloga" />
+        </EntityType>
+        <Association Name="FK_Projekcija_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="1" />
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="idFilm" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="filmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Karta_Rezervacija">
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="1" />
+          <End Role="Karta" Type="Self.Karta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezervacija">
+              <PropertyRef Name="idRezervacije" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="RezervacijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KinoSala_TipMjesta">
+          <End Role="TipMjesta" Type="Self.TipMjesta" Multiplicity="1" />
+          <End Role="KinoSala" Type="Self.KinoSala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipMjesta">
+              <PropertyRef Name="idTipMjesta" />
+            </Principal>
+            <Dependent Role="KinoSala">
+              <PropertyRef Name="TipMjestaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekcija_KinoSala">
+          <End Role="KinoSala" Type="Self.KinoSala" Multiplicity="1" />
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KinoSala">
+              <PropertyRef Name="idKinoSala" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="kinoSalaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="idKorisnik" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Privilegije_Uloga">
+          <End Role="Uloga" Type="Self.Uloga" Multiplicity="1" />
+          <End Role="Privilegije" Type="Self.Privilegije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloga">
+              <PropertyRef Name="idUloga" />
+            </Principal>
+            <Dependent Role="Privilegije">
+              <PropertyRef Name="ulogaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StavkePrivilegije_Privilegija">
+          <End Role="Privilegije" Type="Self.Privilegije" Multiplicity="1" />
+          <End Role="StavkePrivilegije" Type="Self.StavkePrivilegije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilegije">
+              <PropertyRef Name="idPrivilegije" />
+            </Principal>
+            <Dependent Role="StavkePrivilegije">
+              <PropertyRef Name="privilegijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekcija_TipProjekcije">
+          <End Role="TipProjekcije" Type="Self.TipProjekcije" Multiplicity="1" />
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipProjekcije">
+              <PropertyRef Name="idTipProjekcije" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="tipProjekcijeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Projekcija">
+          <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekcija">
+              <PropertyRef Name="idProjekcija" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="projekcijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Specponuda">
+          <End Role="SpecijalnePonude" Type="Self.SpecijalnePonude" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecijalnePonude">
+              <PropertyRef Name="idSpecPonude" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="specijalnaPonudaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Uposlenik">
+          <End Role="Uposlenik" Type="Self.Uposlenik" Multiplicity="0..1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uposlenik">
+              <PropertyRef Name="idUposlenik" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="uposlenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uposlenik_Uloga">
+          <End Role="Uloga" Type="Self.Uloga" Multiplicity="1" />
+          <End Role="Uposlenik" Type="Self.Uposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloga">
+              <PropertyRef Name="idUloga" />
+            </Principal>
+            <Dependent Role="Uposlenik">
+              <PropertyRef Name="ulogaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GradFilmaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Films" EntityType="Self.Film" />
+          <EntitySet Name="Kartas" EntityType="Self.Karta" />
+          <EntitySet Name="KinoSalas" EntityType="Self.KinoSala" />
+          <EntitySet Name="Korisniks" EntityType="Self.Korisnik" />
+          <EntitySet Name="Privilegijes" EntityType="Self.Privilegije" />
+          <EntitySet Name="Projekcijas" EntityType="Self.Projekcija" />
+          <EntitySet Name="Rezervacijas" EntityType="Self.Rezervacija" />
+          <EntitySet Name="SpecijalnePonudes" EntityType="Self.SpecijalnePonude" />
+          <EntitySet Name="StavkePrivilegijes" EntityType="Self.StavkePrivilegije" />
+          <EntitySet Name="TipMjestas" EntityType="Self.TipMjesta" />
+          <EntitySet Name="TipProjekcijes" EntityType="Self.TipProjekcije" />
+          <EntitySet Name="Ulogas" EntityType="Self.Uloga" />
+          <EntitySet Name="Uposleniks" EntityType="Self.Uposlenik" />
+          <AssociationSet Name="FK_Projekcija_Film" Association="Self.FK_Projekcija_Film">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="Projekcija" EntitySet="Projekcijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Karta_Rezervacija" Association="Self.FK_Karta_Rezervacija">
+            <End Role="Rezervacija" EntitySet="Rezervacijas" />
+            <End Role="Karta" EntitySet="Kartas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoSala_TipMjesta" Association="Self.FK_KinoSala_TipMjesta">
+            <End Role="TipMjesta" EntitySet="TipMjestas" />
+            <End Role="KinoSala" EntitySet="KinoSalas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekcija_KinoSala" Association="Self.FK_Projekcija_KinoSala">
+            <End Role="KinoSala" EntitySet="KinoSalas" />
+            <End Role="Projekcija" EntitySet="Projekcijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Korisnik" Association="Self.FK_Rezervacija_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisniks" />
+            <End Role="Rezervacija" EntitySet="Rezervacijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Privilegije_Uloga" Association="Self.FK_Privilegije_Uloga">
+            <End Role="Uloga" EntitySet="Ulogas" />
+            <End Role="Privilegije" EntitySet="Privilegijes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StavkePrivilegije_Privilegija" Association="Self.FK_StavkePrivilegije_Privilegija">
+            <End Role="Privilegije" EntitySet="Privilegijes" />
+            <End Role="StavkePrivilegije" EntitySet="StavkePrivilegijes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekcija_TipProjekcije" Association="Self.FK_Projekcija_TipProjekcije">
+            <End Role="TipProjekcije" EntitySet="TipProjekcijes" />
+            <End Role="Projekcija" EntitySet="Projekcijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Projekcija" Association="Self.FK_Rezervacija_Projekcija">
+            <End Role="Projekcija" EntitySet="Projekcijas" />
+            <End Role="Rezervacija" EntitySet="Rezervacijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Specponuda" Association="Self.FK_Rezervacija_Specponuda">
+            <End Role="SpecijalnePonude" EntitySet="SpecijalnePonudes" />
+            <End Role="Rezervacija" EntitySet="Rezervacijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Uposlenik" Association="Self.FK_Rezervacija_Uposlenik">
+            <End Role="Uposlenik" EntitySet="Uposleniks" />
+            <End Role="Rezervacija" EntitySet="Rezervacijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uposlenik_Uloga" Association="Self.FK_Uposlenik_Uloga">
+            <End Role="Uloga" EntitySet="Ulogas" />
+            <End Role="Uposlenik" EntitySet="Uposleniks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GradFilmaModelStoreContainer" CdmEntityContainer="GradFilmaEntities">
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="GradFilmaModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="idFilm" ColumnName="idFilm" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="reziser" ColumnName="reziser" />
+                <ScalarProperty Name="glumci" ColumnName="glumci" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kartas">
+            <EntityTypeMapping TypeName="GradFilmaModel.Karta">
+              <MappingFragment StoreEntitySet="Karta">
+                <ScalarProperty Name="idKarta" ColumnName="idKarta" />
+                <ScalarProperty Name="RezervacijaId" ColumnName="RezervacijaId" />
+                <ScalarProperty Name="barkod" ColumnName="barkod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KinoSalas">
+            <EntityTypeMapping TypeName="GradFilmaModel.KinoSala">
+              <MappingFragment StoreEntitySet="KinoSala">
+                <ScalarProperty Name="idKinoSala" ColumnName="idKinoSala" />
+                <ScalarProperty Name="brojSale" ColumnName="brojSale" />
+                <ScalarProperty Name="brojMjesta" ColumnName="brojMjesta" />
+                <ScalarProperty Name="tipMjesta" ColumnName="tipMjesta" />
+                <ScalarProperty Name="TipMjestaId" ColumnName="TipMjestaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisniks">
+            <EntityTypeMapping TypeName="GradFilmaModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="idKorisnik" ColumnName="idKorisnik" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="jmbg" ColumnName="jmbg" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privilegijes">
+            <EntityTypeMapping TypeName="GradFilmaModel.Privilegije">
+              <MappingFragment StoreEntitySet="Privilegije">
+                <ScalarProperty Name="idPrivilegije" ColumnName="idPrivilegije" />
+                <ScalarProperty Name="ulogaId" ColumnName="ulogaId" />
+                <ScalarProperty Name="manipulacijaKorisnicima" ColumnName="manipulacijaKorisnicima" />
+                <ScalarProperty Name="manipulacijaPodacima" ColumnName="manipulacijaPodacima" />
+                <ScalarProperty Name="manipulacijaRezervacijama" ColumnName="manipulacijaRezervacijama" />
+                <ScalarProperty Name="manipulacijaSadrzajem" ColumnName="manipulacijaSadrzajem" />
+                <ScalarProperty Name="manipulacijaUposlenicima" ColumnName="manipulacijaUposlenicima" />
+                <ScalarProperty Name="registracija" ColumnName="registracija" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projekcijas">
+            <EntityTypeMapping TypeName="GradFilmaModel.Projekcija">
+              <MappingFragment StoreEntitySet="Projekcija">
+                <ScalarProperty Name="idProjekcija" ColumnName="idProjekcija" />
+                <ScalarProperty Name="vrijemePrikazivanja" ColumnName="vrijemePrikazivanja" />
+                <ScalarProperty Name="tipProjekcijeId" ColumnName="tipProjekcijeId" />
+                <ScalarProperty Name="filmId" ColumnName="filmId" />
+                <ScalarProperty Name="kinoSalaId" ColumnName="kinoSalaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezervacijas">
+            <EntityTypeMapping TypeName="GradFilmaModel.Rezervacija">
+              <MappingFragment StoreEntitySet="Rezervacija">
+                <ScalarProperty Name="idRezervacije" ColumnName="idRezervacije" />
+                <ScalarProperty Name="brojMjesta" ColumnName="brojMjesta" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+                <ScalarProperty Name="specijalnaPonudaId" ColumnName="specijalnaPonudaId" />
+                <ScalarProperty Name="projekcijaId" ColumnName="projekcijaId" />
+                <ScalarProperty Name="uposlenikId" ColumnName="uposlenikId" />
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecijalnePonudes">
+            <EntityTypeMapping TypeName="GradFilmaModel.SpecijalnePonude">
+              <MappingFragment StoreEntitySet="SpecijalnePonude">
+                <ScalarProperty Name="idSpecPonude" ColumnName="idSpecPonude" />
+                <ScalarProperty Name="maxiComboPaket" ColumnName="maxiComboPaket" />
+                <ScalarProperty Name="midiComboPaket" ColumnName="midiComboPaket" />
+                <ScalarProperty Name="miniComboPaket" ColumnName="miniComboPaket" />
+                <ScalarProperty Name="ladyPaket" ColumnName="ladyPaket" />
+                <ScalarProperty Name="lovePaket" ColumnName="lovePaket" />
+                <ScalarProperty Name="studentDay" ColumnName="studentDay" />
+                <ScalarProperty Name="familyDay" ColumnName="familyDay" />
+                <ScalarProperty Name="workDay" ColumnName="workDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StavkePrivilegijes">
+            <EntityTypeMapping TypeName="GradFilmaModel.StavkePrivilegije">
+              <MappingFragment StoreEntitySet="StavkePrivilegije">
+                <ScalarProperty Name="idStavkePrivilegije" ColumnName="idStavkePrivilegije" />
+                <ScalarProperty Name="privilegijaId" ColumnName="privilegijaId" />
+                <ScalarProperty Name="dodavanjeKorisnika" ColumnName="dodavanjeKorisnika" />
+                <ScalarProperty Name="brisanjeKorisnika" ColumnName="brisanjeKorisnika" />
+                <ScalarProperty Name="rezervacija" ColumnName="rezervacija" />
+                <ScalarProperty Name="otkazivanjeRezervacije" ColumnName="otkazivanjeRezervacije" />
+                <ScalarProperty Name="rezervacijaDodatnogSadrzaja" ColumnName="rezervacijaDodatnogSadrzaja" />
+                <ScalarProperty Name="dodavanjeUposlenika" ColumnName="dodavanjeUposlenika" />
+                <ScalarProperty Name="brisanjeUposlenika" ColumnName="brisanjeUposlenika" />
+                <ScalarProperty Name="registracija" ColumnName="registracija" />
+                <ScalarProperty Name="dodavanjeSadrzaja" ColumnName="dodavanjeSadrzaja" />
+                <ScalarProperty Name="brisanjeSadrzaja" ColumnName="brisanjeSadrzaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipMjestas">
+            <EntityTypeMapping TypeName="GradFilmaModel.TipMjesta">
+              <MappingFragment StoreEntitySet="TipMjesta">
+                <ScalarProperty Name="idTipMjesta" ColumnName="idTipMjesta" />
+                <ScalarProperty Name="mjestoZaParove" ColumnName="mjestoZaParove" />
+                <ScalarProperty Name="mjestoZaOsobeSaInv" ColumnName="mjestoZaOsobeSaInv" />
+                <ScalarProperty Name="mjesto" ColumnName="mjesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipProjekcijes">
+            <EntityTypeMapping TypeName="GradFilmaModel.TipProjekcije">
+              <MappingFragment StoreEntitySet="TipProjekcije">
+                <ScalarProperty Name="idTipProjekcije" ColumnName="idTipProjekcije" />
+                <ScalarProperty Name="C2D" ColumnName="2D" />
+                <ScalarProperty Name="C3D" ColumnName="3D" />
+                <ScalarProperty Name="C4D" ColumnName="4D" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ulogas">
+            <EntityTypeMapping TypeName="GradFilmaModel.Uloga">
+              <MappingFragment StoreEntitySet="Uloga">
+                <ScalarProperty Name="idUloga" ColumnName="idUloga" />
+                <ScalarProperty Name="administrator" ColumnName="administrator" />
+                <ScalarProperty Name="upravnik" ColumnName="upravnik" />
+                <ScalarProperty Name="menadzer" ColumnName="menadzer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uposleniks">
+            <EntityTypeMapping TypeName="GradFilmaModel.Uposlenik">
+              <MappingFragment StoreEntitySet="Uposlenik">
+                <ScalarProperty Name="idUposlenik" ColumnName="idUposlenik" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="jmbg" ColumnName="jmbg" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="ulogaId" ColumnName="ulogaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
