@@ -25,6 +25,9 @@ namespace GradFilmaModel
         [DataMember]
         public string opis { get; set; }
 
-     //   public virtual ICollection<Projekcija> Projekcijas { get; set; }
+        [DataMember]
+        public int filmID { get; set; }
+
+        public virtual ICollection<Projekcija> Projekcijas { get; set; }
     }
 }

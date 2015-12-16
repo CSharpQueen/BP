@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ead187eba954d0f83eb05d5f4888510" Name="Diagram1">
+      <Diagram DiagramId="3ead187eba954d0f83eb05d5f4888510" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="GradFilmaModel.Film" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.Karta" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.KinoSala" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
@@ -30,6 +30,12 @@
         <AssociationConnector Association="GradFilmaModel.FK_Rezervacija_Specponuda" ManuallyRouted="false" />
         <AssociationConnector Association="GradFilmaModel.FK_Rezervacija_Uposlenik" ManuallyRouted="false" />
         <AssociationConnector Association="GradFilmaModel.FK_Uposlenik_Uloga" ManuallyRouted="false" />
+        <AssociationConnector Association="GradFilmaModel.FK_Rezervacija_Uposlenik1" />
+        <AssociationConnector Association="GradFilmaModel.FK_Uposlenik_Uloga1" />
+        <AssociationConnector Association="GradFilmaModel.FK_Privilegije_StavkePriv" />
+        <AssociationConnector Association="GradFilmaModel.FK_Rezervacija_Uposlenik1" />
+        <AssociationConnector Association="GradFilmaModel.FK_Uposlenik_Uloga1" />
+        <AssociationConnector Association="GradFilmaModel.FK_Privilegije_StavkePriv" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

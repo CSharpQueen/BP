@@ -92,9 +92,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GradFilmaEntity\GradFilmaEntity.csproj">
-      <Project>{3a6eef35-2be2-42b8-8f48-0d2f276a1f60}</Project>
-      <Name>GradFilmaEntity</Name>
+    <ProjectReference Include="..\GradFilmaBEntity\GradFilmaBEntity.csproj">
+      <Project>{057cb254-5acc-49c6-ab6d-4aceff380176}</Project>
+      <Name>GradFilmaBEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GradFilmaDatabase\GradFilmaDatabase.sqlproj">
+      <Project>{0b571849-3cda-4b2c-aecd-2aad6dcf3fd6}</Project>
+      <Name>GradFilmaDatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\GradFilmaModel\GradFilmaModel.csproj">
       <Project>{f54d0e1b-f763-4f54-b999-51daea0b3d5d}</Project>

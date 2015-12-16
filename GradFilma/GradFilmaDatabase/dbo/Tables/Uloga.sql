@@ -1,8 +1,9 @@
-﻿CREATE TABLE [dbo].[Uloga] (
-    [idUloga]       INT NOT NULL,
-    [administrator] INT NULL,
-    [upravnik]      INT NULL,
-    [menadzer]      INT NULL,
-    CONSTRAINT [PK_Uloga] PRIMARY KEY CLUSTERED ([idUloga] ASC)
-);
+﻿CREATE TABLE [dbo].[Uloga](
+	[idUloga] [int] NOT NULL,
+	[naziv] [varchar](20) NULL,
+ CONSTRAINT [PK_Uloga] PRIMARY KEY CLUSTERED 
+(
+	[idUloga] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 

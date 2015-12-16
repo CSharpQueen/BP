@@ -8,8 +8,25 @@
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Prezime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Telefon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UlogaID" type="xs:int" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Korisnik" nillable="true" type="tns:Korisnik" />
+  <xs:complexType name="ArrayOfFilm">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Film" nillable="true" type="tns:Film" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilm" nillable="true" type="tns:ArrayOfFilm" />
+  <xs:complexType name="Film">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="filmID" type="xs:int" />
+      <xs:element minOccurs="0" name="glumci" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="naziv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="opis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="reziser" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Film" nillable="true" type="tns:Film" />
 </xs:schema>

@@ -31,18 +31,23 @@ namespace GradFilmaModel
 
         [DataMember]
         public string Password { get; set; }
+
+        [DataMember]
+        public int UlogaID { get; set; }
+
+
         public Korisnik() { }
 
-        public Korisnik(string i, string pr, string j, string a, string t,string u,string p )
-        {
-            Ime = i;
-            Prezime = pr;
-            JMBG = j;
-            Adresa = a;
-            Telefon = t;
-            Username = u;
-            Password = p;
-        }
+        //public Korisnik(string i, string pr, string j, string a, string t,string u,string p )
+        //{
+        //    Ime = i;
+        //    Prezime = pr;
+        //    JMBG = j;
+        //    Adresa = a;
+        //    Telefon = t;
+        //    Username = u;
+        //    Password = p;
+        //}
     }
 }
 

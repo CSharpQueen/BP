@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using GradFilmaModel;
-using GradFilmaEntity;
+using GradFilmaBEntity;
 
 namespace GradFilmaService
 {
@@ -20,7 +20,7 @@ namespace GradFilmaService
             //enkripcija passworda?
             var ctx = new GradFilmaEntities();
 
-            var kor = ctx.Korisniks.FirstOrDefault(k => k.username == korisnik.Username & k.password == korisnik.Password);
+            var kor = ctx.Korisnik.FirstOrDefault(k => k.username == korisnik.Username & k.password == korisnik.Password);
 
             if (kor == null)
             {
@@ -30,7 +30,8 @@ namespace GradFilmaService
 
             var korLog = new GradFilmaModel.Korisnik()
             {
-                Username = kor.username
+                Username = kor.username,
+                Password=kor.password
             };
             return korLog;
         }
@@ -41,8 +42,8 @@ namespace GradFilmaService
             using (var ctx = new GradFilmaEntities())
             {
 
-                var kor = ctx.Korisniks.FirstOrDefault(k => k.username == korisnik.Username);
-
+                var kor = ctx.Korisnik.FirstOrDefault(k => k.username == korisnik.Username);
+                var ul = ctx.Uloga.Find(1);
 
                 if (kor != null)
                 {
@@ -51,25 +52,141 @@ namespace GradFilmaService
 
                 //Praksa2014.Data.Model.Type userType = GetUserType("User", ctx);
 
-                kor = new GradFilmaEntity.Korisnik()
+                kor = new GradFilmaBEntity.Korisnik()
                 {
                     idKorisnik = '3',
-                    ime = korisnik.Username,
-                    prezime = korisnik.Username,
-                    jmbg = korisnik.Username,
-                    telefon = korisnik.Username,
-                    adresa = korisnik.Username,
+                    ime = korisnik.Ime,
+                    prezime = korisnik.Prezime,
+                    jmbg = korisnik.JMBG,
+                    telefon = korisnik.Telefon,
+                    adresa = korisnik.Adresa,
                     username = korisnik.Username,
                     password = korisnik.Password,
-                    
+                   // ulogaId= '1',
+                   
+                    ulogaId=ul.idUloga
                 };
-
-                ctx.Korisniks.Add(kor);
+                
+                ctx.Korisnik.Add(kor);
 
                 ctx.SaveChanges();
             }
 
         }
+
+
+        public List<GradFilmaModel.Film> dajFilmove()
+        {
+            var ctx = new GradFilmaEntities();
+            // List<String> lista = new List<string>();
+            //proc kroz listu
+            List<GradFilmaBEntity.Film> filmoviB = ctx.Film.ToList(); 
+            List<GradFilmaModel.Film> filmovi = new List<GradFilmaModel.Film>();
+            foreach (GradFilmaBEntity.Film film in filmoviB)
+            {
+                GradFilmaModel.Film novi = new GradFilmaModel.Film
+                {
+                    naziv=film.naziv,
+                    glumci=film.glumci,
+                    reziser=film.reziser,
+                    opis=film.opis,
+                    filmID=film.idFilm
+                    
+                };
+                filmovi.Add(novi);
+            }
+            return filmovi;
+        }
+
+        public GradFilmaModel.Film dajFilm(int id)
+        {
+            var ctx = new GradFilmaEntities();
+            var kor = ctx.Film.FirstOrDefault(k => k.idFilm == id);
+
+            if (kor == null)
+            {
+                throw new Exception("Nepostojeci film!");
+                //return false;
+            }
+
+            var korLog = new GradFilmaModel.Film()
+            {
+                naziv = kor.naziv,
+                glumci = kor.glumci,
+                reziser = kor.reziser,
+                opis = kor.opis
+            };
+            return korLog;
+        }
+
+        public void dodajFIlm(GradFilmaModel.Film film)
+        {
+
+            using (var ctx = new GradFilmaEntities())
+            {
+
+                var fil = ctx.Film.FirstOrDefault(f => f.naziv == film.naziv);
+
+
+                if (fil != null)
+                {
+                    throw new Exception("Postoji film sa tim imenom");
+                }
+
+                //Praksa2014.Data.Model.Type userType = GetUserType("User", ctx);
+
+                fil = new GradFilmaBEntity.Film()
+                {
+                    idFilm = '3',
+                    naziv = film.naziv,
+                    glumci = film.glumci,
+                    reziser = film.reziser,
+                    opis = film.opis,
+
+
+                };
+
+                ctx.Film.Add(fil);
+
+                ctx.SaveChanges();
+            }
+
+        }
+
+        public void obrisiFilm(GradFilmaModel.Film film)
+        {
+            var ctx = new GradFilmaEntities();
+
+            var kor = ctx.Film.FirstOrDefault(k => k.idFilm == film.filmID && k.naziv == film.naziv);
+            ctx.Film.Remove(kor);
+            ctx.SaveChanges();
+        }
+
+        public GradFilmaModel.Korisnik dajKorisnika(string username)
+        {
+            var ctx = new GradFilmaEntities();
+            var kor = ctx.Korisnik.FirstOrDefault(k => k.username == username);
+
+            if (kor == null)
+            {
+                throw new Exception("Nepostojeci korisnik!");
+                //return false;
+            }
+
+            var korLog = new GradFilmaModel.Korisnik()
+            {
+               Username=kor.username,
+               Password=kor.password,
+               Ime=kor.ime,
+               Prezime=kor.prezime,
+               Adresa=kor.adresa,
+               JMBG=kor.jmbg,
+               Telefon=kor.telefon,
+               UlogaID=kor.ulogaId
+            };
+            return korLog;
+        }
+
 
     }
 }

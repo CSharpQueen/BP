@@ -89,22 +89,32 @@ namespace WebApplication3.Controllers
                 var client = new GradFIlmaProjekat.ServiceGradFilma.GradFilmaServiceClient();
              
                 GradFilmaModel.Korisnik korisnik = new GradFilmaModel.Korisnik();
-                korisnik.Username = model.Email;
-                korisnik.Password = model.Password;
+                korisnik = client.dajKorisnika(model.Username);
+                
 
                 if (client.Login(korisnik) != null)
                 {
                     client.Close();
                     SignIn(korisnik.Username, true);
-                    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                    var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent:false, shouldLockout: false);
+                    var uloga = korisnik.UlogaID;
                     switch (result)
                     {
                         case SignInStatus.Success:
-                            return RedirectToLocal(returnUrl);
+                            {
+                                switch (korisnik.UlogaID)
+                                {
+                                    case 1:
+                                        return RedirectToAction("Index", "HomeAdmin");
+                                    default:
+                                        return RedirectToLocal(returnUrl);
+                                }
+                            }
+                           
                         case SignInStatus.LockedOut:
                             return View("Lockout");
                         case SignInStatus.RequiresVerification:
-                            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                         case SignInStatus.Failure:
                         default:
                             ModelState.AddModelError("", "Invalid login attempt.");
@@ -179,12 +189,17 @@ namespace WebApplication3.Controllers
                 var client = new GradFIlmaProjekat.ServiceGradFilma.GradFilmaServiceClient();
 
                 GradFilmaModel.Korisnik korisnik = new GradFilmaModel.Korisnik();
-                korisnik.Username = model.Email;
+                korisnik.Username = model.Username;
                 korisnik.Password = model.Password;
+                korisnik.Adresa = model.Adresa;
+                korisnik.Ime = model.Ime;
+                korisnik.Prezime = model.Prezime;
+                korisnik.Telefon = model.Telefon;
+                korisnik.JMBG = model.JMBG;
                 client.Register(korisnik);
 
                 client.Close();
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Username, Email=model.Username };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

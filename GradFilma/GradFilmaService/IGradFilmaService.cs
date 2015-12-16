@@ -20,7 +20,21 @@ namespace GradFilmaService
         [OperationContract]
         void Register(Korisnik korisnik);
 
+        [OperationContract]
+        List<GradFilmaModel.Film> dajFilmove();
+        
+        [OperationContract]
+        GradFilmaModel.Film dajFilm(int id);
 
+        [OperationContract]
+        void dodajFIlm(GradFilmaModel.Film film);
+
+        [OperationContract]
+        void obrisiFilm(GradFilmaModel.Film film);
+
+        [OperationContract]
+        GradFilmaModel.Korisnik dajKorisnika(string username);
+        
 //        [OperationContract]
   //      void Register_Uposlenik(Uposlenik uposlenik);
 

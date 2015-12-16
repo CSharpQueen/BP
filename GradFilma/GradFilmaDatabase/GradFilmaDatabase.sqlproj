@@ -75,6 +75,5 @@
     <Build Include="dbo\Tables\Projekcija.sql" />
     <Build Include="dbo\Tables\Rezervacija.sql" />
     <Build Include="dbo\Tables\StavkePrivilegije.sql" />
-    <Build Include="dbo\Tables\Uposlenik.sql" />
   </ItemGroup>
 </Project>

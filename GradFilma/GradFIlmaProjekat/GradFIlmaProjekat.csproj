@@ -167,8 +167,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SadrzajController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,6 +263,7 @@
     <Content Include="less\mixins.less" />
     <Content Include="less\variables.less" />
     <Content Include="Properties\DataSources\GradFilmaModel.Korisnik.datasource" />
+    <Content Include="Properties\DataSources\GradFilmaModel.Film.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -332,6 +335,15 @@
     <None Include="Service References\ServiceGradFilma\ServiceGradFilma2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\HomeAdmin\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Korisnik\Index.cshtml" />
+    <Content Include="Views\Sadrzaj\Create.cshtml" />
+    <Content Include="Views\Sadrzaj\Delete.cshtml" />
+    <Content Include="Views\Sadrzaj\Details.cshtml" />
+    <Content Include="Views\Sadrzaj\Edit.cshtml" />
+    <Content Include="Views\Sadrzaj\Index.cshtml" />
+    <Content Include="Views\Uposlenik\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,17 +359,21 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GradFilmaBEntity\GradFilmaBEntity.csproj">
+      <Project>{057cb254-5acc-49c6-ab6d-4aceff380176}</Project>
+      <Name>GradFilmaBEntity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GradFilmaDatabase\GradFilmaDatabase.sqlproj">
       <Project>{0b571849-3cda-4b2c-aecd-2aad6dcf3fd6}</Project>
       <Name>GradFilmaDatabase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GradFilmaEntity\GradFilmaEntity.csproj">
-      <Project>{3a6eef35-2be2-42b8-8f48-0d2f276a1f60}</Project>
-      <Name>GradFilmaEntity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GradFilmaModel\GradFilmaModel.csproj">
       <Project>{f54d0e1b-f763-4f54-b999-51daea0b3d5d}</Project>
       <Name>GradFilmaModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GradFilmaService\GradFilmaService.csproj">
+      <Project>{390ed6e4-2e38-4a78-8289-65ac8e762d29}</Project>
+      <Name>GradFilmaService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

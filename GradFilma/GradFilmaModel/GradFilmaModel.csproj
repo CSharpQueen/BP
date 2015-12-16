@@ -59,16 +59,9 @@
     <Compile Include="TipMjesta.cs" />
     <Compile Include="TipProjekcije.cs" />
     <Compile Include="Uloga.cs" />
-    <Compile Include="Uposlenik.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GradFilmaEntity\GradFilmaEntity.csproj">
-      <Project>{3a6eef35-2be2-42b8-8f48-0d2f276a1f60}</Project>
-      <Name>GradFilmaEntity</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

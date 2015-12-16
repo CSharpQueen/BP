@@ -27,4 +27,68 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="dajFilmove">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dajFilmoveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajFilmoveResult" nillable="true" type="q4:ArrayOfFilm" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dajFilm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dajFilmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajFilmResult" nillable="true" type="q5:Film" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dodajFIlm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="film" nillable="true" type="q6:Film" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dodajFIlmResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="obrisiFilm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="film" nillable="true" type="q7:Film" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="obrisiFilmResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dajKorisnika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dajKorisnikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajKorisnikaResult" nillable="true" type="q8:Korisnik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

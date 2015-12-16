@@ -19,6 +19,36 @@
   <wsdl:message name="IGradFilmaService_Register_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajFilmove_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajFilmove" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajFilmove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajFilmoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajFilm" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajFilmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajFIlm_InputMessage">
+    <wsdl:part name="parameters" element="tns:dodajFIlm" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajFIlm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dodajFIlmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_obrisiFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:obrisiFilm" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_obrisiFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obrisiFilmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajKorisnika_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajKorisnika" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajKorisnika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajKorisnikaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGradFilmaService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/Login" message="tns:IGradFilmaService_Login_InputMessage" />
@@ -27,6 +57,26 @@
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/Register" message="tns:IGradFilmaService_Register_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/RegisterResponse" message="tns:IGradFilmaService_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dajFilmove">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajFilmove" message="tns:IGradFilmaService_dajFilmove_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajFilmoveResponse" message="tns:IGradFilmaService_dajFilmove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dajFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajFilm" message="tns:IGradFilmaService_dajFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajFilmResponse" message="tns:IGradFilmaService_dajFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dodajFIlm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dodajFIlm" message="tns:IGradFilmaService_dodajFIlm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dodajFIlmResponse" message="tns:IGradFilmaService_dodajFIlm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obrisiFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/obrisiFilm" message="tns:IGradFilmaService_obrisiFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/obrisiFilmResponse" message="tns:IGradFilmaService_obrisiFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dajKorisnika">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajKorisnika" message="tns:IGradFilmaService_dajKorisnika_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajKorisnikaResponse" message="tns:IGradFilmaService_dajKorisnika_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGradFilmaService" type="tns:IGradFilmaService">
@@ -42,6 +92,51 @@
     </wsdl:operation>
     <wsdl:operation name="Register">
       <soap:operation soapAction="http://tempuri.org/IGradFilmaService/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajFilmove">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajFilmove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajFilm">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dodajFIlm">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dodajFIlm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obrisiFilm">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/obrisiFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajKorisnika">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajKorisnika" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
