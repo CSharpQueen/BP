@@ -344,6 +344,11 @@
     <Content Include="Views\Sadrzaj\Edit.cshtml" />
     <Content Include="Views\Sadrzaj\Index.cshtml" />
     <Content Include="Views\Uposlenik\Index.cshtml" />
+    <Content Include="Views\Rezervacija\Index.cshtml" />
+    <Content Include="Views\Rezervacija\Sjedista.cshtml" />
+    <Content Include="Views\Rezervacija\Create.cshtml" />
+    <Content Include="Views\Rezervacija\Delete.cshtml" />
+    <Content Include="Views\Rezervacija\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
