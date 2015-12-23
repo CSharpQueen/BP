@@ -34,7 +34,27 @@ namespace GradFilmaService
 
         [OperationContract]
         GradFilmaModel.Korisnik dajKorisnika(string username);
-        
+
+
+        [OperationContract]
+     void  dodajKinoSalu(GradFilmaModel.KinoSala kinoSala);
+
+        [OperationContract]
+        GradFilmaModel.KinoSala dajKinoSalu(int brojSale);
+
+
+        [OperationContract]
+        void dodajSjediste(GradFilmaModel.Sjediste sjediste);
+
+        [OperationContract]
+        GradFilmaModel.Sjediste dajSjediste(int brojSale, int brojR, int brojK);
+
+
+
+        [OperationContract]
+        List<GradFilmaModel.Sjediste> dajSjedistaSale(int brojSale);
+
+
 //        [OperationContract]
   //      void Register_Uposlenik(Uposlenik uposlenik);
 

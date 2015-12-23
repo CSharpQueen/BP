@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Visual Studio 2013 Projects\GradFilmaFinal\GradFilma\GradFilmaEntity\GradFilma.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Aida\Documents\GitHub\BP\GradFilma\GradFilmaEntity\GradFilma.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

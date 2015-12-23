@@ -16,7 +16,7 @@ namespace GradFilmaEntity
     {
         public SpecijalnePonude()
         {
-            this.Rezervacijas = new HashSet<Rezervacija>();
+            this.Rezervacija = new HashSet<Rezervacija>();
         }
     
         public int idSpecPonude { get; set; }
@@ -29,6 +29,6 @@ namespace GradFilmaEntity
         public string familyDay { get; set; }
         public string workDay { get; set; }
     
-        public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
+        public virtual ICollection<Rezervacija> Rezervacija { get; set; }
     }
 }

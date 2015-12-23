@@ -16,16 +16,17 @@ namespace GradFilmaEntity
     {
         public KinoSala()
         {
-            this.Projekcijas = new HashSet<Projekcija>();
+            this.Projekcija = new HashSet<Projekcija>();
+            this.Sjediste = new HashSet<Sjediste>();
         }
     
         public int idKinoSala { get; set; }
         public int brojSale { get; set; }
         public int brojMjesta { get; set; }
-        public string tipMjesta { get; set; }
-        public int TipMjestaId { get; set; }
+        public int brojRedova { get; set; }
+        public int brojKolona { get; set; }
     
-        public virtual TipMjesta TipMjesta1 { get; set; }
-        public virtual ICollection<Projekcija> Projekcijas { get; set; }
+        public virtual ICollection<Projekcija> Projekcija { get; set; }
+        public virtual ICollection<Sjediste> Sjediste { get; set; }
     }
 }

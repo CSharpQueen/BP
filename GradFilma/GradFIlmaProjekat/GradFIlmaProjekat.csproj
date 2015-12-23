@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SadrzajController.cs" />
+    <Compile Include="Controllers\RezervacijaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,6 +265,8 @@
     <Content Include="less\variables.less" />
     <Content Include="Properties\DataSources\GradFilmaModel.Korisnik.datasource" />
     <Content Include="Properties\DataSources\GradFilmaModel.Film.datasource" />
+    <Content Include="Properties\DataSources\GradFilmaModel.KinoSala.datasource" />
+    <Content Include="Properties\DataSources\GradFilmaModel.Sjediste.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -352,6 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Sjedista\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -364,10 +368,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GradFilmaBEntity\GradFilmaBEntity.csproj">
-      <Project>{057cb254-5acc-49c6-ab6d-4aceff380176}</Project>
-      <Name>GradFilmaBEntity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GradFilmaDatabase\GradFilmaDatabase.sqlproj">
       <Project>{0b571849-3cda-4b2c-aecd-2aad6dcf3fd6}</Project>
       <Name>GradFilmaDatabase</Name>

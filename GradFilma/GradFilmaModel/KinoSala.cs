@@ -11,9 +11,11 @@ namespace GradFilmaModel
 {    [DataContract]
     public class KinoSala
     {
-       
 
-    //    public int idKinoSala { get; set; }
+
+       
+        [DataMember]
+        public int idKinoSala { get; set; }
 
         [DataMember]
         public int brojSale { get; set; }
@@ -22,18 +24,12 @@ namespace GradFilmaModel
         public int brojMjesta { get; set; }
 
         [DataMember]
-        public string tipMjesta { get; set; }
-
+        public int brojRedova { get; set; }
         [DataMember]
-        public int TipMjestaId { get; set; }
+        public int brojKolona { get; set; }
+       
+       [DataMember]
+       public int TipMjestaId { get; set; }
 
-     //   public virtual TipMjesta TipMjesta1 { get; set; }
-       // public virtual ICollection<Projekcija> Projekcijas { get; set; }
-
-
-        public KinoSala()
-        {
-            //      this.Projekcijas = new HashSet<Projekcija>();
-        }
     }
 }

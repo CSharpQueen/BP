@@ -16,19 +16,16 @@ namespace GradFilmaEntity
     {
         public Privilegije()
         {
-            this.StavkePrivilegijes = new HashSet<StavkePrivilegije>();
+            this.StavkePrivilegije = new HashSet<StavkePrivilegije>();
         }
     
         public int idPrivilegije { get; set; }
         public int ulogaId { get; set; }
-        public Nullable<int> manipulacijaKorisnicima { get; set; }
-        public Nullable<int> manipulacijaPodacima { get; set; }
-        public Nullable<int> manipulacijaRezervacijama { get; set; }
-        public Nullable<int> manipulacijaSadrzajem { get; set; }
-        public Nullable<int> manipulacijaUposlenicima { get; set; }
-        public Nullable<int> registracija { get; set; }
+        public string naziv { get; set; }
     
+        public virtual Privilegije Privilegije1 { get; set; }
+        public virtual Privilegije Privilegije2 { get; set; }
         public virtual Uloga Uloga { get; set; }
-        public virtual ICollection<StavkePrivilegije> StavkePrivilegijes { get; set; }
+        public virtual ICollection<StavkePrivilegije> StavkePrivilegije { get; set; }
     }
 }

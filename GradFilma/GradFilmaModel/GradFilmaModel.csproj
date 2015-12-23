@@ -54,6 +54,7 @@
     <Compile Include="Projekcija.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rezervacija.cs" />
+    <Compile Include="Sjediste.cs" />
     <Compile Include="SpecijalnePonude.cs" />
     <Compile Include="StavkePrivilegije.cs" />
     <Compile Include="TipMjesta.cs" />

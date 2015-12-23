@@ -7,23 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GradFilmaEntity
+namespace GradFilmaBEntity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TipProjekcije
+    public partial class Karta
     {
-        public TipProjekcije()
-        {
-            this.Projekcija = new HashSet<Projekcija>();
-        }
+        public int idKarta { get; set; }
+        public int RezervacijaId { get; set; }
+        public string barkod { get; set; }
     
-        public int idTipProjekcije { get; set; }
-        public Nullable<int> C2D { get; set; }
-        public Nullable<int> C3D { get; set; }
-        public Nullable<int> C4D { get; set; }
-    
-        public virtual ICollection<Projekcija> Projekcija { get; set; }
+        public virtual Rezervacija Rezervacija { get; set; }
     }
 }

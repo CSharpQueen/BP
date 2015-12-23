@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A6EEF35-2BE2-42B8-8F48-0D2F276A1F60}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{E783C402-CCE0-4893-9795-3A67D88DD3F1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GradFilmaEntity</RootNamespace>
     <AssemblyName>GradFilmaEntity</AssemblyName>
@@ -30,9 +30,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -91,6 +88,9 @@
     <Compile Include="Rezervacija.cs">
       <DependentUpon>GradFilma.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sjediste.cs">
+      <DependentUpon>GradFilma.tt</DependentUpon>
+    </Compile>
     <Compile Include="SpecijalnePonude.cs">
       <DependentUpon>GradFilma.tt</DependentUpon>
     </Compile>
@@ -104,9 +104,6 @@
       <DependentUpon>GradFilma.tt</DependentUpon>
     </Compile>
     <Compile Include="Uloga.cs">
-      <DependentUpon>GradFilma.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Uposlenik.cs">
       <DependentUpon>GradFilma.tt</DependentUpon>
     </Compile>
   </ItemGroup>

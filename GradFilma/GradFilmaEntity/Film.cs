@@ -16,7 +16,7 @@ namespace GradFilmaEntity
     {
         public Film()
         {
-            this.Projekcijas = new HashSet<Projekcija>();
+            this.Projekcija = new HashSet<Projekcija>();
         }
     
         public int idFilm { get; set; }
@@ -25,6 +25,6 @@ namespace GradFilmaEntity
         public string glumci { get; set; }
         public string opis { get; set; }
     
-        public virtual ICollection<Projekcija> Projekcijas { get; set; }
+        public virtual ICollection<Projekcija> Projekcija { get; set; }
     }
 }

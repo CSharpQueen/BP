@@ -16,7 +16,7 @@ namespace GradFilmaEntity
     {
         public Korisnik()
         {
-            this.Rezervacijas = new HashSet<Rezervacija>();
+            this.Rezervacija = new HashSet<Rezervacija>();
         }
     
         public int idKorisnik { get; set; }
@@ -27,7 +27,9 @@ namespace GradFilmaEntity
         public string adresa { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public int ulogaId { get; set; }
     
-        public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
+        public virtual ICollection<Rezervacija> Rezervacija { get; set; }
+        public virtual Uloga Uloga { get; set; }
     }
 }

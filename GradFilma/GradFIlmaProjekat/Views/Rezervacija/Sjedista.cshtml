@@ -1,7 +1,40 @@
 ﻿
+@model IEnumerable<GradFilmaModel.Sjediste> 
 @{
     ViewBag.Title = "Sjedista";
 }
 
+
 <h2>Sjedista</h2>
 
+
+
+
+
+
+@foreach (var item in Model)
+ {
+     var a=7;
+      if(item.brojKolone!=7)
+      { <tr>
+    <button type="button">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
+    
+
+           
+    &nbsp
+    
+    </tr>  
+    }
+       
+      else if (item.brojKolone==7)
+      
+          {   <button type="button">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
+    //  @Html.DisplayFor(modelItem => item.idSjedista)
+   
+     //@Html.DisplayFor(modelItem => item.brojReda) 
+    //@Html.DisplayFor(modelItem => item.brojKolone);
+     
+<br />
+}                                    
+
+}

@@ -12,18 +12,16 @@ namespace GradFilmaEntity
     using System;
     using System.Collections.Generic;
     
-    public partial class TipProjekcije
+    public partial class Sjediste
     {
-        public TipProjekcije()
-        {
-            this.Projekcija = new HashSet<Projekcija>();
-        }
+        public int idSjedista { get; set; }
+        public int brojReda { get; set; }
+        public int brojKolone { get; set; }
+        public int tip { get; set; }
+        public int zauzeto { get; set; }
+        public int SalaID { get; set; }
     
-        public int idTipProjekcije { get; set; }
-        public Nullable<int> C2D { get; set; }
-        public Nullable<int> C3D { get; set; }
-        public Nullable<int> C4D { get; set; }
-    
-        public virtual ICollection<Projekcija> Projekcija { get; set; }
+        public virtual KinoSala KinoSala { get; set; }
+        public virtual TipMjesta TipMjesta { get; set; }
     }
 }

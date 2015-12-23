@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using GradFilmaModel;
-using GradFilmaBEntity;
+using GradFilmaEntity;
 
 namespace GradFilmaService
 {
@@ -52,7 +52,7 @@ namespace GradFilmaService
 
                 //Praksa2014.Data.Model.Type userType = GetUserType("User", ctx);
 
-                kor = new GradFilmaBEntity.Korisnik()
+                kor = new GradFilmaEntity.Korisnik()
                 {
                     idKorisnik = '3',
                     ime = korisnik.Ime,
@@ -80,9 +80,9 @@ namespace GradFilmaService
             var ctx = new GradFilmaEntities();
             // List<String> lista = new List<string>();
             //proc kroz listu
-            List<GradFilmaBEntity.Film> filmoviB = ctx.Film.ToList(); 
+            List<GradFilmaEntity.Film> filmoviB = ctx.Film.ToList(); 
             List<GradFilmaModel.Film> filmovi = new List<GradFilmaModel.Film>();
-            foreach (GradFilmaBEntity.Film film in filmoviB)
+            foreach (GradFilmaEntity.Film film in filmoviB)
             {
                 GradFilmaModel.Film novi = new GradFilmaModel.Film
                 {
@@ -135,7 +135,7 @@ namespace GradFilmaService
 
                 //Praksa2014.Data.Model.Type userType = GetUserType("User", ctx);
 
-                fil = new GradFilmaBEntity.Film()
+                fil = new GradFilmaEntity.Film()
                 {
                     idFilm = '3',
                     naziv = film.naziv,
@@ -187,6 +187,150 @@ namespace GradFilmaService
             return korLog;
         }
 
+        public void dodajKinoSalu(GradFilmaModel.KinoSala kinoSala)
+        {
 
+            using (var ctx = new GradFilmaEntities())
+            {
+
+                var kinoS = ctx.KinoSala.FirstOrDefault(ks => ks.brojSale == kinoSala.brojSale);
+
+
+                if (kinoS != null)
+                {
+                    throw new Exception("Postoji takva kino sala!");
+                }
+
+ 
+                kinoS= new GradFilmaEntity.KinoSala()
+                {
+                    idKinoSala = '1',
+                    brojSale = kinoSala.brojSale,
+                    brojMjesta = kinoSala.brojMjesta
+                    
+
+                };
+
+                ctx.KinoSala.Add(kinoS);
+
+                ctx.SaveChanges();
+            }
+
+        }
+
+
+
+
+        public GradFilmaModel.KinoSala dajKinoSalu(int brojSale)
+        {
+            var ctx = new GradFilmaEntities();
+            var kinoS = ctx.KinoSala.FirstOrDefault(k => k.brojSale == brojSale);
+
+            if (kinoS == null)
+            {
+                throw new Exception("Nepostojeca kino sala!");
+                //return false;
+            }
+
+            var kinoSala = new GradFilmaModel.KinoSala()
+            {
+                brojMjesta = kinoS.brojMjesta,
+                brojSale = kinoS.brojSale
+            };
+            return kinoSala;
+        }
+
+
+        public void dodajSjediste(GradFilmaModel.Sjediste sjediste)
+        {
+
+            using (var ctx = new GradFilmaEntities())
+            {
+
+                var sjed = ctx.Sjediste.FirstOrDefault(s =>s.idSjedista  == sjediste.idSjedista);
+
+
+                if (sjed != null)
+                {
+                    throw new Exception("Postoji sjediste sa tim id brojem");
+                }
+
+                //Praksa2014.Data.Model.Type userType = GetUserType("User", ctx);
+
+                sjed = new GradFilmaEntity.Sjediste()
+                {
+                    idSjedista=sjed.idSjedista,
+                    brojReda=sjed.brojReda,
+                    brojKolone=sjed.brojKolone,
+                    tip=sjed.tip,
+                    zauzeto=sjed.zauzeto,
+                    SalaID=sjed.SalaID
+                    
+
+                };
+
+                ctx.Sjediste.Add(sjed);
+
+                ctx.SaveChanges();
+            }
+
+        }
+
+
+        public GradFilmaModel.Sjediste dajSjediste(int brojSale, int brojR, int brojK)
+        {
+            var ctx = new GradFilmaEntities();
+            var sjed = ctx.Sjediste.FirstOrDefault(s => s.SalaID == brojSale &&  s.brojReda == brojR && s.brojKolone == brojK );
+
+            if (sjed == null)
+            {
+                throw new Exception("Nepostojece sjediste!");
+                //return false;
+            }
+
+            var sjediste = new GradFilmaModel.Sjediste()
+            {
+                idSjedista=sjed.idSjedista,
+                brojReda=sjed.brojReda,
+                brojKolone=sjed.brojKolone,
+                tip=sjed.tip,
+                zauzeto=sjed.zauzeto,
+                SalaID=sjed.SalaID
+            };
+            return sjediste;
+        }
+
+
+        public List<GradFilmaModel.Sjediste> dajSjedistaSale(int brojSale)
+        {
+            var ctx = new GradFilmaEntities();
+           //proc kroz listu
+            List<GradFilmaEntity.Sjediste> sjedistaB = ctx.Sjediste.ToList();
+            List<GradFilmaEntity.Sjediste> sjedistaKraj = new List<GradFilmaEntity.Sjediste>();
+           foreach(GradFilmaEntity.Sjediste s in sjedistaB)
+           {
+
+               if (s.SalaID == brojSale)
+                   sjedistaKraj.Add(s);
+           }
+            List<GradFilmaModel.Sjediste> sjedista = new List<GradFilmaModel.Sjediste>();
+            foreach (GradFilmaEntity.Sjediste sjediste in sjedistaKraj)
+            {
+                GradFilmaModel.Sjediste novi = new GradFilmaModel.Sjediste
+                {
+                    idSjedista = sjediste.idSjedista,
+                    brojReda = sjediste.brojReda,
+                    brojKolone= sjediste.brojKolone,
+                    tip=sjediste.tip,
+                    zauzeto= sjediste.zauzeto,
+                    SalaID= sjediste.SalaID
+
+                };
+                sjedista.Add(novi);
+            }
+            return sjedista;
+        }
+
+    
     }
 }

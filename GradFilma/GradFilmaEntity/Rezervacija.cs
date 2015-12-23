@@ -16,7 +16,7 @@ namespace GradFilmaEntity
     {
         public Rezervacija()
         {
-            this.Kartas = new HashSet<Karta>();
+            this.Karta = new HashSet<Karta>();
         }
     
         public int idRezervacije { get; set; }
@@ -25,12 +25,10 @@ namespace GradFilmaEntity
         public int specijalnaPonudaId { get; set; }
         public int projekcijaId { get; set; }
         public Nullable<int> uposlenikId { get; set; }
-        public Nullable<int> korisnikId { get; set; }
     
-        public virtual ICollection<Karta> Kartas { get; set; }
+        public virtual ICollection<Karta> Karta { get; set; }
         public virtual Korisnik Korisnik { get; set; }
         public virtual Projekcija Projekcija { get; set; }
         public virtual SpecijalnePonude SpecijalnePonude { get; set; }
-        public virtual Uposlenik Uposlenik { get; set; }
     }
 }

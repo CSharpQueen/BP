@@ -16,16 +16,14 @@ namespace GradFilmaEntity
     {
         public Uloga()
         {
-            this.Privilegijes = new HashSet<Privilegije>();
-            this.Uposleniks = new HashSet<Uposlenik>();
+            this.Korisnik = new HashSet<Korisnik>();
+            this.Privilegije = new HashSet<Privilegije>();
         }
     
         public int idUloga { get; set; }
-        public Nullable<int> administrator { get; set; }
-        public Nullable<int> upravnik { get; set; }
-        public Nullable<int> menadzer { get; set; }
+        public string naziv { get; set; }
     
-        public virtual ICollection<Privilegije> Privilegijes { get; set; }
-        public virtual ICollection<Uposlenik> Uposleniks { get; set; }
+        public virtual ICollection<Korisnik> Korisnik { get; set; }
+        public virtual ICollection<Privilegije> Privilegije { get; set; }
     }
 }

@@ -29,4 +29,32 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Film" nillable="true" type="tns:Film" />
+  <xs:complexType name="KinoSala">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TipMjestaId" type="xs:int" />
+      <xs:element minOccurs="0" name="brojKolona" type="xs:int" />
+      <xs:element minOccurs="0" name="brojMjesta" type="xs:int" />
+      <xs:element minOccurs="0" name="brojRedova" type="xs:int" />
+      <xs:element minOccurs="0" name="brojSale" type="xs:int" />
+      <xs:element minOccurs="0" name="idKinoSala" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KinoSala" nillable="true" type="tns:KinoSala" />
+  <xs:complexType name="Sjediste">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SalaID" type="xs:int" />
+      <xs:element minOccurs="0" name="brojKolone" type="xs:int" />
+      <xs:element minOccurs="0" name="brojReda" type="xs:int" />
+      <xs:element minOccurs="0" name="idSjedista" type="xs:int" />
+      <xs:element minOccurs="0" name="tip" type="xs:int" />
+      <xs:element minOccurs="0" name="zauzeto" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sjediste" nillable="true" type="tns:Sjediste" />
+  <xs:complexType name="ArrayOfSjediste">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sjediste" nillable="true" type="tns:Sjediste" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSjediste" nillable="true" type="tns:ArrayOfSjediste" />
 </xs:schema>

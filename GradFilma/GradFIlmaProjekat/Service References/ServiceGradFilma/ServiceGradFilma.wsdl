@@ -49,6 +49,36 @@
   <wsdl:message name="IGradFilmaService_dajKorisnika_OutputMessage">
     <wsdl:part name="parameters" element="tns:dajKorisnikaResponse" />
   </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajKinoSalu_InputMessage">
+    <wsdl:part name="parameters" element="tns:dodajKinoSalu" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajKinoSalu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dodajKinoSaluResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajKinoSalu_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajKinoSalu" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajKinoSalu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajKinoSaluResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajSjediste_InputMessage">
+    <wsdl:part name="parameters" element="tns:dodajSjediste" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajSjediste_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dodajSjedisteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajSjediste_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajSjediste" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajSjediste_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajSjedisteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajSjedistaSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajSjedistaSale" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dajSjedistaSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajSjedistaSaleResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGradFilmaService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/Login" message="tns:IGradFilmaService_Login_InputMessage" />
@@ -77,6 +107,26 @@
     <wsdl:operation name="dajKorisnika">
       <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajKorisnika" message="tns:IGradFilmaService_dajKorisnika_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajKorisnikaResponse" message="tns:IGradFilmaService_dajKorisnika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dodajKinoSalu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dodajKinoSalu" message="tns:IGradFilmaService_dodajKinoSalu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dodajKinoSaluResponse" message="tns:IGradFilmaService_dodajKinoSalu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dajKinoSalu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajKinoSalu" message="tns:IGradFilmaService_dajKinoSalu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajKinoSaluResponse" message="tns:IGradFilmaService_dajKinoSalu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dodajSjediste">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dodajSjediste" message="tns:IGradFilmaService_dodajSjediste_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dodajSjedisteResponse" message="tns:IGradFilmaService_dodajSjediste_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dajSjediste">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajSjediste" message="tns:IGradFilmaService_dajSjediste_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajSjedisteResponse" message="tns:IGradFilmaService_dajSjediste_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dajSjedistaSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajSjedistaSale" message="tns:IGradFilmaService_dajSjedistaSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajSjedistaSaleResponse" message="tns:IGradFilmaService_dajSjedistaSale_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGradFilmaService" type="tns:IGradFilmaService">
@@ -137,6 +187,51 @@
     </wsdl:operation>
     <wsdl:operation name="dajKorisnika">
       <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajKorisnika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dodajKinoSalu">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dodajKinoSalu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajKinoSalu">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajKinoSalu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dodajSjediste">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dodajSjediste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajSjediste">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajSjediste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajSjedistaSale">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajSjedistaSale" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -16,7 +16,7 @@ namespace GradFilmaEntity
     {
         public Projekcija()
         {
-            this.Rezervacijas = new HashSet<Rezervacija>();
+            this.Rezervacija = new HashSet<Rezervacija>();
         }
     
         public int idProjekcija { get; set; }
@@ -28,6 +28,6 @@ namespace GradFilmaEntity
         public virtual Film Film { get; set; }
         public virtual KinoSala KinoSala { get; set; }
         public virtual TipProjekcije TipProjekcije { get; set; }
-        public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
+        public virtual ICollection<Rezervacija> Rezervacija { get; set; }
     }
 }

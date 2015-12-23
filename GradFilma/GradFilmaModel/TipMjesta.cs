@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 namespace GradFilmaModel
 {    [DataContract]
-    class TipMjesta
+   public class TipMjesta
     {
        
       //  public int idTipMjesta { get; set; }
