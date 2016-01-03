@@ -97,7 +97,7 @@
       <Name>GradFilmaDatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\GradFilmaEntity\GradFilmaEntity.csproj">
-      <Project>{e783c402-cce0-4893-9795-3a67d88dd3f1}</Project>
+      <Project>{c123aeef-1b52-43ae-b8ea-f1cc2a037711}</Project>
       <Name>GradFilmaEntity</Name>
     </ProjectReference>
     <ProjectReference Include="..\GradFilmaModel\GradFilmaModel.csproj">

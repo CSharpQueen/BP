@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaService", "GradFil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaModel", "GradFilmaModel\GradFilmaModel.csproj", "{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaEntity", "GradFilmaEntity\GradFilmaEntity.csproj", "{E783C402-CCE0-4893-9795-3A67D88DD3F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaEntity", "GradFilmaEntity\GradFilmaEntity.csproj", "{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,10 +40,10 @@ Global
 		{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E783C402-CCE0-4893-9795-3A67D88DD3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E783C402-CCE0-4893-9795-3A67D88DD3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E783C402-CCE0-4893-9795-3A67D88DD3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E783C402-CCE0-4893-9795-3A67D88DD3F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

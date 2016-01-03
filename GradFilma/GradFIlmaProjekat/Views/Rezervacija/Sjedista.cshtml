@@ -1,40 +1,40 @@
-﻿
-@model IEnumerable<GradFilmaModel.Sjediste> 
-@{
-    ViewBag.Title = "Sjedista";
-}
-
-
-<h2>Sjedista</h2>
-
-
-
-
-
-
-@foreach (var item in Model)
- {
-     var a=7;
-      if(item.brojKolone!=7)
-      { <tr>
-    <button type="button">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
-    
-
-           
-    &nbsp
-    
-    </tr>  
+﻿@model IEnumerable<GradFilmaModel.Sjediste>
+    @{
+        ViewBag.Title = "Sjedista";
     }
-       
-      else if (item.brojKolone==7)
-      
-          {   <button type="button">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
-    //  @Html.DisplayFor(modelItem => item.idSjedista)
-   
-     //@Html.DisplayFor(modelItem => item.brojReda) 
-    //@Html.DisplayFor(modelItem => item.brojKolone);
-     
-<br />
-}                                    
+
+    @section JavaScript
+{
+        <script type="text/javascript" src="@Url.Content("/Scripts/ButtonBoja.js")"></script>
+
+    }
+
+
+    <h2>Sjedista</h2>
+
+
+
+
+    
+    
+     @foreach (var item in Model) { var b = 0; if (item.brojKolone != 7) {
+
+             <tr>
+
+            <button type="button" id='button' value="button" style=" background-color:lightgreen;" onclick="setColor(id)">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
+
+
+            &nbsp
+
+        </tr>
+}
+
+else if (item.brojKolone == 7)
+{  <button id='button' value="button" style=" background-color:lightgreen;" onclick="setColor(id)">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
+
+    <br />
+}
 
 }
+
+    

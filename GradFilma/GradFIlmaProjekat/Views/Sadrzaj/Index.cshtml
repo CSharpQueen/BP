@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+    <br />
+    <br />
+    <br />
 
 <div class="row">
     <div class="box">
@@ -13,6 +16,11 @@
         </p>
         <table class="table">
             <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.slika)
+                     
+                </th>
+                
                 <th>
                     @Html.DisplayNameFor(model => model.naziv)
                 </th>
@@ -30,8 +38,14 @@
 
             @foreach (var item in Model)
             {
+                
                 <tr>
                     <td>
+                        
+                        <img src="@Url.Content(Model.slika)" alt="Image" />
+                    </td>
+                    
+                     <td>
                         @Html.DisplayFor(modelItem => item.naziv)
                     </td>
                     <td>

@@ -28,6 +28,10 @@ namespace GradFilmaModel
         [DataMember]
         public int filmID { get; set; }
 
+        [DataMember]
+        public string slika { get; set; }
+
+
         public virtual ICollection<Projekcija> Projekcijas { get; set; }
     }
 }

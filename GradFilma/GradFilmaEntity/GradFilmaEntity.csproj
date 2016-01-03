@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E783C402-CCE0-4893-9795-3A67D88DD3F1}</ProjectGuid>
+    <ProjectGuid>{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GradFilmaEntity</RootNamespace>

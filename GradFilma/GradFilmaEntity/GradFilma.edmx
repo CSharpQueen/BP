@@ -14,6 +14,7 @@
           <Property Name="reziser" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="glumci" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="opis" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="slika" Type="varchar" MaxLength="2000" />
         </EntityType>
         <EntityType Name="Karta">
           <Key>
@@ -369,6 +370,7 @@
           <Property Name="reziser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="glumci" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="opis" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="slika" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Projekcija" Relationship="Self.FK_Projekcija_Film" FromRole="Film" ToRole="Projekcija" />
         </EntityType>
         <EntityType Name="Karta">
@@ -750,6 +752,7 @@
                 <ScalarProperty Name="reziser" ColumnName="reziser" />
                 <ScalarProperty Name="glumci" ColumnName="glumci" />
                 <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="slika" ColumnName="slika" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
