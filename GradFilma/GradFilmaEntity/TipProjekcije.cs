@@ -20,9 +20,7 @@ namespace GradFilmaEntity
         }
     
         public int idTipProjekcije { get; set; }
-        public Nullable<int> C2D { get; set; }
-        public Nullable<int> C3D { get; set; }
-        public Nullable<int> C4D { get; set; }
+        public string naziv { get; set; }
     
         public virtual ICollection<Projekcija> Projekcija { get; set; }
     }

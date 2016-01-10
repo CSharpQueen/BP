@@ -30,18 +30,16 @@ namespace GradFilmaService
         void dodajFIlm(GradFilmaModel.Film film);
 
         [OperationContract]
-        void obrisiFilm(GradFilmaModel.Film film);
+        void obrisiFilm(int id);
 
         [OperationContract]
         GradFilmaModel.Korisnik dajKorisnika(string username);
 
-
         [OperationContract]
-     void  dodajKinoSalu(GradFilmaModel.KinoSala kinoSala);
+        void  dodajKinoSalu(GradFilmaModel.KinoSala kinoSala);
 
         [OperationContract]
         GradFilmaModel.KinoSala dajKinoSalu(int brojSale);
-
 
         [OperationContract]
         void dodajSjediste(GradFilmaModel.Sjediste sjediste);
@@ -49,16 +47,18 @@ namespace GradFilmaService
         [OperationContract]
         GradFilmaModel.Sjediste dajSjediste(int brojSale, int brojR, int brojK);
 
-
-
         [OperationContract]
         List<GradFilmaModel.Sjediste> dajSjedistaSale(int brojSale);
 
+        [OperationContract]
+        void zauzmiSjediste(int sjediste);
 
-//        [OperationContract]
-  //      void Register_Uposlenik(Uposlenik uposlenik);
+        [OperationContract]
+        void editujFIlm(int id, GradFilmaModel.Film filmM);
 
-        //isto i za uposlenika
+        [OperationContract]
+        void dodajProjekciju(GradFilmaModel.Projekcija projekcija);
+
     }
 
 

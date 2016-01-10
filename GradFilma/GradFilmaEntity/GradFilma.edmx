@@ -5,22 +5,84 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="GradFilmaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="Film">
           <Key>
             <PropertyRef Name="idFilm" />
           </Key>
-          <Property Name="idFilm" Type="int" Nullable="false" />
+          <Property Name="idFilm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="reziser" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="glumci" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="opis" Type="varchar" MaxLength="1000" Nullable="false" />
-          <Property Name="slika" Type="varchar" MaxLength="2000" />
+          <Property Name="slika" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="trajanje" Type="time" Precision="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Karta">
           <Key>
             <PropertyRef Name="idKarta" />
           </Key>
-          <Property Name="idKarta" Type="int" Nullable="false" />
+          <Property Name="idKarta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RezervacijaId" Type="int" Nullable="false" />
           <Property Name="barkod" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
@@ -28,7 +90,7 @@
           <Key>
             <PropertyRef Name="idKinoSala" />
           </Key>
-          <Property Name="idKinoSala" Type="int" Nullable="false" />
+          <Property Name="idKinoSala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="brojSale" Type="int" Nullable="false" />
           <Property Name="brojMjesta" Type="int" Nullable="false" />
           <Property Name="brojRedova" Type="int" Nullable="false" />
@@ -38,7 +100,7 @@
           <Key>
             <PropertyRef Name="idKorisnik" />
           </Key>
-          <Property Name="idKorisnik" Type="int" Nullable="false" />
+          <Property Name="idKorisnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ime" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="prezime" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="jmbg" Type="varchar" MaxLength="13" Nullable="false" />
@@ -52,7 +114,7 @@
           <Key>
             <PropertyRef Name="idPrivilegije" />
           </Key>
-          <Property Name="idPrivilegije" Type="int" Nullable="false" />
+          <Property Name="idPrivilegije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ulogaId" Type="int" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="30" />
         </EntityType>
@@ -60,7 +122,7 @@
           <Key>
             <PropertyRef Name="idProjekcija" />
           </Key>
-          <Property Name="idProjekcija" Type="int" Nullable="false" />
+          <Property Name="idProjekcija" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="vrijemePrikazivanja" Type="datetime" Nullable="false" />
           <Property Name="tipProjekcijeId" Type="int" Nullable="false" />
           <Property Name="filmId" Type="int" Nullable="false" />
@@ -70,18 +132,19 @@
           <Key>
             <PropertyRef Name="idRezervacije" />
           </Key>
-          <Property Name="idRezervacije" Type="int" Nullable="false" />
+          <Property Name="idRezervacije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="brojMjesta" Type="int" Nullable="false" />
           <Property Name="cijena" Type="decimal" Precision="10" Scale="0" Nullable="false" />
           <Property Name="specijalnaPonudaId" Type="int" Nullable="false" />
           <Property Name="projekcijaId" Type="int" Nullable="false" />
           <Property Name="uposlenikId" Type="int" />
+          <Property Name="datum" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Sjediste">
           <Key>
             <PropertyRef Name="idSjedista" />
           </Key>
-          <Property Name="idSjedista" Type="int" Nullable="false" />
+          <Property Name="idSjedista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="brojReda" Type="int" Nullable="false" />
           <Property Name="brojKolone" Type="int" Nullable="false" />
           <Property Name="tip" Type="int" Nullable="false" />
@@ -92,7 +155,7 @@
           <Key>
             <PropertyRef Name="idSpecPonude" />
           </Key>
-          <Property Name="idSpecPonude" Type="int" Nullable="false" />
+          <Property Name="idSpecPonude" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="maxiComboPaket" Type="varchar" MaxLength="5" />
           <Property Name="midiComboPaket" Type="varchar" MaxLength="5" />
           <Property Name="miniComboPaket" Type="varchar" MaxLength="5" />
@@ -106,7 +169,7 @@
           <Key>
             <PropertyRef Name="idStavkePrivilegije" />
           </Key>
-          <Property Name="idStavkePrivilegije" Type="int" Nullable="false" />
+          <Property Name="idStavkePrivilegije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="privilegijaId" Type="int" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="30" />
         </EntityType>
@@ -114,25 +177,79 @@
           <Key>
             <PropertyRef Name="idTipMjesta" />
           </Key>
-          <Property Name="idTipMjesta" Type="int" Nullable="false" />
+          <Property Name="idTipMjesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nazivMjesta" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="TipProjekcije">
           <Key>
             <PropertyRef Name="idTipProjekcije" />
           </Key>
-          <Property Name="idTipProjekcije" Type="int" Nullable="false" />
-          <Property Name="2D" Type="int" />
-          <Property Name="3D" Type="int" />
-          <Property Name="4D" Type="int" />
+          <Property Name="idTipProjekcije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="Uloga">
           <Key>
             <PropertyRef Name="idUloga" />
           </Key>
-          <Property Name="idUloga" Type="int" Nullable="false" />
+          <Property Name="idUloga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="20" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Karta_Rezervacija">
           <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="1" />
           <End Role="Karta" Type="Self.Karta" Multiplicity="*" />
@@ -290,6 +407,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="GradFilmaModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Karta" EntityType="Self.Karta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KinoSala" EntityType="Self.KinoSala" Schema="dbo" store:Type="Tables" />
@@ -303,6 +426,22 @@
           <EntitySet Name="TipMjesta" EntityType="Self.TipMjesta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipProjekcije" EntityType="Self.TipProjekcije" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uloga" EntityType="Self.Uloga" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Karta_Rezervacija" Association="Self.FK_Karta_Rezervacija">
             <End Role="Rezervacija" EntitySet="Rezervacija" />
             <End Role="Karta" EntitySet="Karta" />
@@ -361,23 +500,83 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GradFilmaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
         <EntityType Name="Film">
           <Key>
             <PropertyRef Name="idFilm" />
           </Key>
-          <Property Name="idFilm" Type="Int32" Nullable="false" />
+          <Property Name="idFilm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="reziser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="glumci" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="opis" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="slika" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="slika" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trajanje" Type="Time" Nullable="false" Precision="0" />
           <NavigationProperty Name="Projekcija" Relationship="Self.FK_Projekcija_Film" FromRole="Film" ToRole="Projekcija" />
         </EntityType>
         <EntityType Name="Karta">
           <Key>
             <PropertyRef Name="idKarta" />
           </Key>
-          <Property Name="idKarta" Type="Int32" Nullable="false" />
+          <Property Name="idKarta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RezervacijaId" Type="Int32" Nullable="false" />
           <Property Name="barkod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Rezervacija" Relationship="Self.FK_Karta_Rezervacija" FromRole="Karta" ToRole="Rezervacija" />
@@ -386,7 +585,7 @@
           <Key>
             <PropertyRef Name="idKinoSala" />
           </Key>
-          <Property Name="idKinoSala" Type="Int32" Nullable="false" />
+          <Property Name="idKinoSala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="brojSale" Type="Int32" Nullable="false" />
           <Property Name="brojMjesta" Type="Int32" Nullable="false" />
           <Property Name="brojRedova" Type="Int32" Nullable="false" />
@@ -398,7 +597,7 @@
           <Key>
             <PropertyRef Name="idKorisnik" />
           </Key>
-          <Property Name="idKorisnik" Type="Int32" Nullable="false" />
+          <Property Name="idKorisnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="prezime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="jmbg" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
@@ -414,7 +613,7 @@
           <Key>
             <PropertyRef Name="idPrivilegije" />
           </Key>
-          <Property Name="idPrivilegije" Type="Int32" Nullable="false" />
+          <Property Name="idPrivilegije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ulogaId" Type="Int32" Nullable="false" />
           <Property Name="naziv" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Privilegije1" Relationship="Self.FK_Privilegije_StavkePriv" FromRole="Privilegije" ToRole="Privilegije1" />
@@ -426,7 +625,7 @@
           <Key>
             <PropertyRef Name="idProjekcija" />
           </Key>
-          <Property Name="idProjekcija" Type="Int32" Nullable="false" />
+          <Property Name="idProjekcija" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="vrijemePrikazivanja" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="tipProjekcijeId" Type="Int32" Nullable="false" />
           <Property Name="filmId" Type="Int32" Nullable="false" />
@@ -440,12 +639,13 @@
           <Key>
             <PropertyRef Name="idRezervacije" />
           </Key>
-          <Property Name="idRezervacije" Type="Int32" Nullable="false" />
+          <Property Name="idRezervacije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="brojMjesta" Type="Int32" Nullable="false" />
           <Property Name="cijena" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
           <Property Name="specijalnaPonudaId" Type="Int32" Nullable="false" />
           <Property Name="projekcijaId" Type="Int32" Nullable="false" />
           <Property Name="uposlenikId" Type="Int32" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Karta" Relationship="Self.FK_Karta_Rezervacija" FromRole="Rezervacija" ToRole="Karta" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Rezervacija_Uposlenik" FromRole="Rezervacija" ToRole="Korisnik" />
           <NavigationProperty Name="Projekcija" Relationship="Self.FK_Rezervacija_Projekcija" FromRole="Rezervacija" ToRole="Projekcija" />
@@ -455,7 +655,7 @@
           <Key>
             <PropertyRef Name="idSjedista" />
           </Key>
-          <Property Name="idSjedista" Type="Int32" Nullable="false" />
+          <Property Name="idSjedista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="brojReda" Type="Int32" Nullable="false" />
           <Property Name="brojKolone" Type="Int32" Nullable="false" />
           <Property Name="tip" Type="Int32" Nullable="false" />
@@ -468,7 +668,7 @@
           <Key>
             <PropertyRef Name="idSpecPonude" />
           </Key>
-          <Property Name="idSpecPonude" Type="Int32" Nullable="false" />
+          <Property Name="idSpecPonude" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="maxiComboPaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="midiComboPaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="miniComboPaket" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
@@ -483,7 +683,7 @@
           <Key>
             <PropertyRef Name="idStavkePrivilegije" />
           </Key>
-          <Property Name="idStavkePrivilegije" Type="Int32" Nullable="false" />
+          <Property Name="idStavkePrivilegije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="privilegijaId" Type="Int32" Nullable="false" />
           <Property Name="naziv" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Privilegije" Relationship="Self.FK_StavkePrivilegije_Privilegija" FromRole="StavkePrivilegije" ToRole="Privilegije" />
@@ -492,7 +692,7 @@
           <Key>
             <PropertyRef Name="idTipMjesta" />
           </Key>
-          <Property Name="idTipMjesta" Type="Int32" Nullable="false" />
+          <Property Name="idTipMjesta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nazivMjesta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Sjediste" Relationship="Self.FK_Sjediste_TipMjesta" FromRole="TipMjesta" ToRole="Sjediste" />
         </EntityType>
@@ -500,21 +700,47 @@
           <Key>
             <PropertyRef Name="idTipProjekcije" />
           </Key>
-          <Property Name="idTipProjekcije" Type="Int32" Nullable="false" />
-          <Property Name="C2D" Type="Int32" />
-          <Property Name="C3D" Type="Int32" />
-          <Property Name="C4D" Type="Int32" />
+          <Property Name="idTipProjekcije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Projekcija" Relationship="Self.FK_Projekcija_TipProjekcije" FromRole="TipProjekcije" ToRole="Projekcija" />
         </EntityType>
         <EntityType Name="Uloga">
           <Key>
             <PropertyRef Name="idUloga" />
           </Key>
-          <Property Name="idUloga" Type="Int32" Nullable="false" />
+          <Property Name="idUloga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Uposlenik_Uloga" FromRole="Uloga" ToRole="Korisnik" />
           <NavigationProperty Name="Privilegije" Relationship="Self.FK_Privilegije_Uloga" FromRole="Uloga" ToRole="Privilegije" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Projekcija_Film">
           <End Role="Film" Type="Self.Film" Multiplicity="1" />
           <End Role="Projekcija" Type="Self.Projekcija" Multiplicity="*" />
@@ -671,7 +897,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="GradFilmaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Film" EntityType="Self.Film" />
           <EntitySet Name="Karta" EntityType="Self.Karta" />
           <EntitySet Name="KinoSala" EntityType="Self.KinoSala" />
@@ -685,6 +920,14 @@
           <EntitySet Name="TipMjesta" EntityType="Self.TipMjesta" />
           <EntitySet Name="TipProjekcije" EntityType="Self.TipProjekcije" />
           <EntitySet Name="Uloga" EntityType="Self.Uloga" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
           <AssociationSet Name="FK_Projekcija_Film" Association="Self.FK_Projekcija_Film">
             <End Role="Film" EntitySet="Film" />
             <End Role="Projekcija" EntitySet="Projekcija" />
@@ -737,6 +980,10 @@
             <End Role="TipMjesta" EntitySet="TipMjesta" />
             <End Role="Sjediste" EntitySet="Sjediste" />
           </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -744,6 +991,61 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GradFilmaModelStoreContainer" CdmEntityContainer="GradFilmaEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GradFilmaModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="GradFilmaModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="GradFilmaModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="GradFilmaModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GradFilmaModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Film">
             <EntityTypeMapping TypeName="GradFilmaModel.Film">
               <MappingFragment StoreEntitySet="Film">
@@ -753,6 +1055,7 @@
                 <ScalarProperty Name="glumci" ColumnName="glumci" />
                 <ScalarProperty Name="opis" ColumnName="opis" />
                 <ScalarProperty Name="slika" ColumnName="slika" />
+                <ScalarProperty Name="trajanje" ColumnName="trajanje" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -820,6 +1123,7 @@
                 <ScalarProperty Name="specijalnaPonudaId" ColumnName="specijalnaPonudaId" />
                 <ScalarProperty Name="projekcijaId" ColumnName="projekcijaId" />
                 <ScalarProperty Name="uposlenikId" ColumnName="uposlenikId" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -871,9 +1175,7 @@
             <EntityTypeMapping TypeName="GradFilmaModel.TipProjekcije">
               <MappingFragment StoreEntitySet="TipProjekcije">
                 <ScalarProperty Name="idTipProjekcije" ColumnName="idTipProjekcije" />
-                <ScalarProperty Name="C2D" ColumnName="2D" />
-                <ScalarProperty Name="C3D" ColumnName="3D" />
-                <ScalarProperty Name="C4D" ColumnName="4D" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -885,6 +1187,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="GradFilmaModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

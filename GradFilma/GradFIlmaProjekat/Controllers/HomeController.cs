@@ -18,7 +18,6 @@ namespace GradFIlmaProjekat.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public ActionResult Index(Mail model)
         {

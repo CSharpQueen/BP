@@ -1,23 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="941b9414a6d14c8cba3e8b717c096d2f" Name="Diagram1">
+      <Diagram DiagramId="740285da616e43cc81e0e5e94063ed9e" Name="Diagram1">
+        <EntityTypeShape EntityType="GradFilmaModel.C__MigrationHistory" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.AspNetRoles" Width="1.5" PointX="7.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.AspNetUserClaims" Width="1.5" PointX="12.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.AspNetUserLogins" Width="1.5" PointX="12.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.AspNetUsers" Width="1.5" PointX="10" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.Film" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.Karta" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradFilmaModel.KinoSala" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.KinoSala" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.Korisnik" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.Privilegije" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.Projekcija" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradFilmaModel.Rezervacija" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradFilmaModel.Sjediste" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradFilmaModel.SpecijalnePonude" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.Rezervacija" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.Sjediste" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.SpecijalnePonude" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.StavkePrivilegije" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradFilmaModel.TipMjesta" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradFilmaModel.TipProjekcije" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.TipMjesta" Width="1.5" PointX="3.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradFilmaModel.TipProjekcije" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GradFilmaModel.Uloga" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="GradFilmaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GradFilmaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="GradFilmaModel.FK_Projekcija_Film" ManuallyRouted="false" />
         <AssociationConnector Association="GradFilmaModel.FK_Karta_Rezervacija" ManuallyRouted="false" />
         <AssociationConnector Association="GradFilmaModel.FK_Projekcija_KinoSala" ManuallyRouted="false" />
@@ -31,6 +38,7 @@
         <AssociationConnector Association="GradFilmaModel.FK_Rezervacija_Projekcija" ManuallyRouted="false" />
         <AssociationConnector Association="GradFilmaModel.FK_Rezervacija_Specponuda" ManuallyRouted="false" />
         <AssociationConnector Association="GradFilmaModel.FK_Sjediste_TipMjesta" ManuallyRouted="false" />
+        <AssociationConnector Association="GradFilmaModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

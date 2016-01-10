@@ -26,6 +26,8 @@
       <xs:element minOccurs="0" name="naziv" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="opis" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="reziser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="slika" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="trajanje" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Film" nillable="true" type="tns:Film" />
@@ -57,4 +59,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSjediste" nillable="true" type="tns:ArrayOfSjediste" />
+  <xs:complexType name="Projekcija">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="filmId" type="xs:int" />
+      <xs:element minOccurs="0" name="kinoSalaId" type="xs:int" />
+      <xs:element minOccurs="0" name="tipProjekcijeId" type="xs:int" />
+      <xs:element minOccurs="0" name="vrijemePrikazivanja" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Projekcija" nillable="true" type="tns:Projekcija" />
 </xs:schema>

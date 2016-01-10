@@ -25,6 +25,7 @@ namespace GradFilmaEntity
         public string glumci { get; set; }
         public string opis { get; set; }
         public string slika { get; set; }
+        public System.TimeSpan trajanje { get; set; }
     
         public virtual ICollection<Projekcija> Projekcija { get; set; }
     }

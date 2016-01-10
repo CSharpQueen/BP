@@ -5,36 +5,80 @@
 
     @section JavaScript
 {
-        <script type="text/javascript" src="@Url.Content("/Scripts/ButtonBoja.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/ButtonBojaa.js")"></script>
 
     }
 
 
-    <h2>Sjedista</h2>
+    <h2>Odabir sjedista</h2>
+<br><br><br>
 
-
-
-
-    
-    
-     @foreach (var item in Model) { var b = 0; if (item.brojKolone != 7) {
-
+     @foreach (var item in Model)
+     
+     { var b = 0; if (item.brojKolone != 7)
+     {
+         if (item.zauzeto == 0)
+         { 
              <tr>
-
-            <button type="button" id='button' value="button" style=" background-color:lightgreen;" onclick="setColor(id)">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
-
+                 
+                 <button type="button" id='@item.idSjedista' value="button" style=" background-color:lightgreen;" onclick="setColor(id)">
+                     @Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)
+                 </button>
+               
 
             &nbsp
-
         </tr>
+     }
+         else if (item.zauzeto == 1)
+         {
+              <tr>
+                 
+                 <button type="button" id='@item.idSjedista' value="button" style=" background-color:red;">
+                     @Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)
+                 </button>
+               
+
+            &nbsp
+        </tr>
+     }
+         
+         
 }
 
-else if (item.brojKolone == 7)
-{  <button id='button' value="button" style=" background-color:lightgreen;" onclick="setColor(id)">@Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)</button>
-
-    <br />
-}
-
-}
-
+     else if (item.brojKolone == 7)
+     {
+         
+         if(item.zauzeto==0)
+         { 
+             <button id='@item.idSjedista' value="button" style=" background-color:lightgreen;" onclick="setColor(id)">
     
+             @Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)
+             
+         </button>
+         <br/>
+     }
+     else   if(item.zauzeto==1)
+         { 
+             <button id='@item.idSjedista' value="button" style=" background-color:red;">
+    
+             @Html.DisplayFor(modelItem => item.brojReda),@Html.DisplayFor(modelItem => item.brojKolone)
+             
+         </button>
+         <br/>
+     }
+     
+ 
+     }
+     
+     }
+<br />
+
+<form method="post" action='@Url.Action("Potvrdi", "Rezervacija")'>
+    <input type="submit" value=" Potvrdi"/>
+    <input type="text" name="skriveni" id="skriveni" hidden />
+</form>
+<br>
+<br>
+<div>
+    @Html.ActionLink("<<Nazad", "Index")
+</div>

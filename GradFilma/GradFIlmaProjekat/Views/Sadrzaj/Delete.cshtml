@@ -42,13 +42,19 @@
                 <dd>
                     @Html.DisplayFor(model => model.opis)
                 </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.trajanje)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.trajanje)
+                </dd>
             </dl>
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
-                    <input type="submit" value="Obriši" class="btn btn-default" /> |
+                    <input type="submit" value="Obrisi" class="btn btn-default" /> |
                     @Html.ActionLink("<<Nazad", "Index")
                 </div>
             }

@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace GradFilmaModel
 {[DataContract]
@@ -13,7 +14,7 @@ namespace GradFilmaModel
        
        // public int idProjekcija { get; set; }
       [DataMember]
-        public System.DateTime vrijemePrikazivanja { get; set; }
+        public DateTime vrijemePrikazivanja { get; set; }
       [DataMember]
         public int tipProjekcijeId { get; set; }
       [DataMember]

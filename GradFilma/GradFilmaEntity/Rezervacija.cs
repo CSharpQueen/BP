@@ -25,6 +25,7 @@ namespace GradFilmaEntity
         public int specijalnaPonudaId { get; set; }
         public int projekcijaId { get; set; }
         public Nullable<int> uposlenikId { get; set; }
+        public System.DateTime datum { get; set; }
     
         public virtual ICollection<Karta> Karta { get; set; }
         public virtual Korisnik Korisnik { get; set; }

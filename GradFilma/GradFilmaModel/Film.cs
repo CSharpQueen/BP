@@ -12,7 +12,9 @@ namespace GradFilmaModel
     [DataContract]
    public class Film
     {
-        
+        [DataMember]
+        public int filmID { get; set; }
+
         [DataMember]
         public string naziv { get; set; }
 
@@ -26,12 +28,11 @@ namespace GradFilmaModel
         public string opis { get; set; }
 
         [DataMember]
-        public int filmID { get; set; }
-
-        [DataMember]
         public string slika { get; set; }
-
-
-        public virtual ICollection<Projekcija> Projekcijas { get; set; }
+       
+        [DataMember]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
+        public DateTime trajanje { get; set; }
     }
 }

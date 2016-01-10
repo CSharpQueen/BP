@@ -70,7 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ServiceGradFilma.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ServiceGradFilma.svc.cs">
@@ -92,12 +94,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GradFilmaDatabase\GradFilmaDatabase.sqlproj">
-      <Project>{0b571849-3cda-4b2c-aecd-2aad6dcf3fd6}</Project>
-      <Name>GradFilmaDatabase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GradFilmaEntity\GradFilmaEntity.csproj">
-      <Project>{c123aeef-1b52-43ae-b8ea-f1cc2a037711}</Project>
+      <Project>{f8370684-71e3-45a8-b4ff-7927aea91477}</Project>
       <Name>GradFilmaEntity</Name>
     </ProjectReference>
     <ProjectReference Include="..\GradFilmaModel\GradFilmaModel.csproj">

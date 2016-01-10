@@ -1,7 +1,81 @@
-﻿
+﻿@model IEnumerable<GradFilmaModel.Film>
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<br/>
+<br/>
+<h2>Odabir filma</h2>
+                      <br />
+                      <br />
+                      <br />
+                      <div class="row">
+                          <div class="box">
+                              <table class="table">
+                                  <tr><th>Pregled filmova:</th></tr>
+                                  <tr>
 
-<h2>Index</h2>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.slika)
+
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.naziv)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.glumci)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.reziser)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.opis)
+                                      </th>
+                                      <th>
+                                          @Html.DisplayNameFor(model => model.trajanje)
+
+                                      </th>
+
+                                      <th></th>
+                                  </tr>
+                                @foreach (var item in Model)
+{
+    string imageName = item.slika;
+    int i = 1;
+    string nazivID = "selFilm" + i;
+    <tr>
+        <td>
+
+            <img src="@Url.Content(item.slika)" alt="Image" width="80" height="80" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.glumci)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reziser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trajanje)
+        </td>
+        <td>
+            
+            <input type="checkbox" id=nazivID required>
+        </td>
+    </tr>
+    i++;
+}
+                              </table>
+                          </div>
+                      </div>
+
+<div>
+    @Html.ActionLink("Dalje>>", "Projekcija")
+</div>
+
 

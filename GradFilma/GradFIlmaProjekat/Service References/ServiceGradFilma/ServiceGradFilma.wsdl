@@ -79,6 +79,24 @@
   <wsdl:message name="IGradFilmaService_dajSjedistaSale_OutputMessage">
     <wsdl:part name="parameters" element="tns:dajSjedistaSaleResponse" />
   </wsdl:message>
+  <wsdl:message name="IGradFilmaService_zauzmiSjediste_InputMessage">
+    <wsdl:part name="parameters" element="tns:zauzmiSjediste" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_zauzmiSjediste_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zauzmiSjedisteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_editujFIlm_InputMessage">
+    <wsdl:part name="parameters" element="tns:editujFIlm" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_editujFIlm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:editujFIlmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajProjekciju_InputMessage">
+    <wsdl:part name="parameters" element="tns:dodajProjekciju" />
+  </wsdl:message>
+  <wsdl:message name="IGradFilmaService_dodajProjekciju_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dodajProjekcijuResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGradFilmaService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/Login" message="tns:IGradFilmaService_Login_InputMessage" />
@@ -127,6 +145,18 @@
     <wsdl:operation name="dajSjedistaSale">
       <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dajSjedistaSale" message="tns:IGradFilmaService_dajSjedistaSale_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dajSjedistaSaleResponse" message="tns:IGradFilmaService_dajSjedistaSale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zauzmiSjediste">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/zauzmiSjediste" message="tns:IGradFilmaService_zauzmiSjediste_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/zauzmiSjedisteResponse" message="tns:IGradFilmaService_zauzmiSjediste_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="editujFIlm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/editujFIlm" message="tns:IGradFilmaService_editujFIlm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/editujFIlmResponse" message="tns:IGradFilmaService_editujFIlm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dodajProjekciju">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradFilmaService/dodajProjekciju" message="tns:IGradFilmaService_dodajProjekciju_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradFilmaService/dodajProjekcijuResponse" message="tns:IGradFilmaService_dodajProjekciju_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGradFilmaService" type="tns:IGradFilmaService">
@@ -232,6 +262,33 @@
     </wsdl:operation>
     <wsdl:operation name="dajSjedistaSale">
       <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dajSjedistaSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zauzmiSjediste">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/zauzmiSjediste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editujFIlm">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/editujFIlm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dodajProjekciju">
+      <soap:operation soapAction="http://tempuri.org/IGradFilmaService/dodajProjekciju" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

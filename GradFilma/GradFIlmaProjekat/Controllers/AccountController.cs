@@ -203,6 +203,7 @@ namespace WebApplication3.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
                     //var client=new 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

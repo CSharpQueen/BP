@@ -1,0 +1,27 @@
+﻿@model IEnumerable<GradFilmaModel.Projekcija>
+                      
+
+    @{
+        ViewBag.Title = "Projekcija";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+                      <link type="text/css" href="Contents/datepicker.css" rel="stylesheet" />
+                      <link type="text/css" href="Contents/jquery-ui.css" rel="stylesheet" />
+                      <script type="text/javascript" src="Scripts/jquery-ui.js"></script>          
+    <br>
+    <br>
+    <br>
+    <h2>Odabir termina projekcije</h2>
+    <br />
+    <br />
+    <br />
+    <input type="text" id="MyDate"/>
+    <script type="text/javascript">
+        $(function () {
+            $('#MyDate').datepicker();
+        });
+    </script>
+
+    <br/>
+    <br/>

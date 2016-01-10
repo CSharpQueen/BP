@@ -8,13 +8,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFIlmaProjekat", "GradFI
 		{390ED6E4-2E38-4A78-8289-65AC8E762D29} = {390ED6E4-2E38-4A78-8289-65AC8E762D29}
 	EndProjectSection
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GradFilmaDatabase", "GradFilmaDatabase\GradFilmaDatabase.sqlproj", "{0B571849-3CDA-4B2C-AECD-2AAD6DCF3FD6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaService", "GradFilmaService\GradFilmaService.csproj", "{390ED6E4-2E38-4A78-8289-65AC8E762D29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaModel", "GradFilmaModel\GradFilmaModel.csproj", "{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaEntity", "GradFilmaEntity\GradFilmaEntity.csproj", "{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradFilmaEntity", "GradFilmaEntity\GradFilmaEntity.csproj", "{F8370684-71E3-45A8-B4FF-7927AEA91477}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1117DAE4-DE91-4A54-8DA7-53D97EA7B04B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,12 +29,6 @@ Global
 		{7064562D-9765-4DCE-A8FA-359F59BA0A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7064562D-9765-4DCE-A8FA-359F59BA0A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7064562D-9765-4DCE-A8FA-359F59BA0A4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B571849-3CDA-4B2C-AECD-2AAD6DCF3FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B571849-3CDA-4B2C-AECD-2AAD6DCF3FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B571849-3CDA-4B2C-AECD-2AAD6DCF3FD6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{0B571849-3CDA-4B2C-AECD-2AAD6DCF3FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B571849-3CDA-4B2C-AECD-2AAD6DCF3FD6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B571849-3CDA-4B2C-AECD-2AAD6DCF3FD6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{390ED6E4-2E38-4A78-8289-65AC8E762D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{390ED6E4-2E38-4A78-8289-65AC8E762D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{390ED6E4-2E38-4A78-8289-65AC8E762D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,10 +37,10 @@ Global
 		{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F54D0E1B-F763-4F54-B999-51DAEA0B3D5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C123AEEF-1B52-43AE-B8EA-F1CC2A037711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8370684-71E3-45A8-B4FF-7927AEA91477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8370684-71E3-45A8-B4FF-7927AEA91477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8370684-71E3-45A8-B4FF-7927AEA91477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8370684-71E3-45A8-B4FF-7927AEA91477}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,11 +24,11 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
     <script type="text/javascript" src="@Url.Content("/Scripts/ButtonBoja.js")"></script>
-    @RenderSection("JavaScript", required: false)
+    
     @*mora ostat ukljuceno zbog logina*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body id="page-top" class="index">
     <!-- Navigation -->
@@ -123,8 +123,10 @@
     <!-- Custom Theme JavaScript -->
     <script src="Scripts/js/agency.js"></script>
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
-    @RenderSection("scripts", required: false)
-
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
+    <link type="text/css" href="Contents/datepicker.css" rel="stylesheet" />
+    <link type="text/css" href="Contents/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="Scripts/jquery-ui.js"></script>  
 </body>
 </html>

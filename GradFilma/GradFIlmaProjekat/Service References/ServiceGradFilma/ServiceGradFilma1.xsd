@@ -68,7 +68,7 @@
   <xs:element name="obrisiFilm">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="film" nillable="true" type="q7:Film" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -87,14 +87,14 @@
   <xs:element name="dajKorisnikaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajKorisnikaResult" nillable="true" type="q8:Korisnik" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajKorisnikaResult" nillable="true" type="q7:Korisnik" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="dodajKinoSalu">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="kinoSala" nillable="true" type="q9:KinoSala" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="kinoSala" nillable="true" type="q8:KinoSala" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -113,14 +113,14 @@
   <xs:element name="dajKinoSaluResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajKinoSaluResult" nillable="true" type="q10:KinoSala" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajKinoSaluResult" nillable="true" type="q9:KinoSala" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="dodajSjediste">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="sjediste" nillable="true" type="q11:Sjediste" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="sjediste" nillable="true" type="q10:Sjediste" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +141,7 @@
   <xs:element name="dajSjedisteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajSjedisteResult" nillable="true" type="q12:Sjediste" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajSjedisteResult" nillable="true" type="q11:Sjediste" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -155,8 +155,45 @@
   <xs:element name="dajSjedistaSaleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajSjedistaSaleResult" nillable="true" type="q13:ArrayOfSjediste" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="dajSjedistaSaleResult" nillable="true" type="q12:ArrayOfSjediste" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="zauzmiSjediste">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sjediste" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="zauzmiSjedisteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="editujFIlm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="filmM" nillable="true" type="q13:Film" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="editujFIlmResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dodajProjekciju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/GradFilmaModel" minOccurs="0" name="projekcija" nillable="true" type="q14:Projekcija" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dodajProjekcijuResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

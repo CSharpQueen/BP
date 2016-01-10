@@ -54,7 +54,6 @@ namespace GradFilmaService
 
                 kor = new GradFilmaEntity.Korisnik()
                 {
-                    idKorisnik = '3',
                     ime = korisnik.Ime,
                     prezime = korisnik.Prezime,
                     jmbg = korisnik.JMBG,
@@ -62,9 +61,7 @@ namespace GradFilmaService
                     adresa = korisnik.Adresa,
                     username = korisnik.Username,
                     password = korisnik.Password,
-                   // ulogaId= '1',
-                   
-                    ulogaId=ul.idUloga
+                    ulogaId= 2,
                 };
                 
                 ctx.Korisnik.Add(kor);
@@ -90,8 +87,9 @@ namespace GradFilmaService
                     glumci=film.glumci,
                     reziser=film.reziser,
                     opis=film.opis,
-                    filmID=film.idFilm
-                    
+                    filmID=film.idFilm,
+                    slika=film.slika,
+                    trajanje = Convert.ToDateTime(film.trajanje.ToString())
                 };
                 filmovi.Add(novi);
             }
@@ -114,7 +112,9 @@ namespace GradFilmaService
                 naziv = kor.naziv,
                 glumci = kor.glumci,
                 reziser = kor.reziser,
-                opis = kor.opis
+                opis = kor.opis,
+                slika = kor.slika,
+                trajanje = Convert.ToDateTime(kor.trajanje.ToString())
             };
             return korLog;
         }
@@ -134,16 +134,16 @@ namespace GradFilmaService
                 }
 
                 //Praksa2014.Data.Model.Type userType = GetUserType("User", ctx);
-
+                
                 fil = new GradFilmaEntity.Film()
                 {
-                    idFilm = '3',
                     naziv = film.naziv,
                     glumci = film.glumci,
                     reziser = film.reziser,
                     opis = film.opis,
-
-
+                    slika= film.slika,
+                    trajanje = film.trajanje.TimeOfDay
+                    
                 };
 
                 ctx.Film.Add(fil);
@@ -153,11 +153,30 @@ namespace GradFilmaService
 
         }
 
-        public void obrisiFilm(GradFilmaModel.Film film)
+        public void editujFIlm(int id, GradFilmaModel.Film filmM)
+        {
+
+            using (var ctx = new GradFilmaEntities())
+            {
+                var x = id;
+                var film = ctx.Film.FirstOrDefault(f => f.idFilm == id);
+
+                //Praksa2014.Data.Model.Type userType = GetUserType("User", ctx);
+                 film.naziv = filmM.naziv;
+                 film.glumci = filmM.glumci;
+                 film.reziser = filmM.reziser;
+                 film.opis = filmM.opis;
+                 //slika = filmM.slika,
+                 //trajanje = filmM.trajanje.TimeOfDay
+                ctx.SaveChanges();
+            }
+
+        }
+
+        public void obrisiFilm(int id)
         {
             var ctx = new GradFilmaEntities();
-
-            var kor = ctx.Film.FirstOrDefault(k => k.idFilm == film.filmID && k.naziv == film.naziv);
+            var kor = ctx.Film.FirstOrDefault(k => k.idFilm == id);
             ctx.Film.Remove(kor);
             ctx.SaveChanges();
         }
@@ -331,6 +350,44 @@ namespace GradFilmaService
             return sjedista;
         }
 
-    
+        public void zauzmiSjediste(int IDsjediste)
+        {
+            using (var ctx = new GradFilmaEntities())
+            {
+
+                var sjed = ctx.Sjediste.FirstOrDefault(s => s.idSjedista == IDsjediste);
+                sjed.zauzeto = 1;
+                ctx.SaveChanges();
+            }
+        }
+
+        public void dodajProjekciju(GradFilmaModel.Projekcija projekcija)
+        {
+            using (var ctx = new GradFilmaEntities())
+            {
+
+                var proj = ctx.Projekcija.FirstOrDefault(p => p.vrijemePrikazivanja == projekcija.vrijemePrikazivanja);
+
+
+                if (proj != null)
+                {
+                    throw new Exception("Postoji projekcija u tom terminu!");
+                }
+
+                proj = new GradFilmaEntity.Projekcija()
+                {
+                   vrijemePrikazivanja = projekcija.vrijemePrikazivanja,
+                   tipProjekcijeId = projekcija.tipProjekcijeId,
+                   filmId = projekcija.filmId,
+                   kinoSalaId = projekcija.kinoSalaId
+
+                };
+
+                ctx.Projekcija.Add(proj);
+
+                ctx.SaveChanges();
+            }
+        }
+
     }
 }

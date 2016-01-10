@@ -46,10 +46,10 @@ namespace GradFIlmaProjekat.ServiceGradFilma {
         System.Threading.Tasks.Task dodajFIlmAsync(GradFilmaModel.Film film);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/obrisiFilm", ReplyAction="http://tempuri.org/IGradFilmaService/obrisiFilmResponse")]
-        void obrisiFilm(GradFilmaModel.Film film);
+        void obrisiFilm(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/obrisiFilm", ReplyAction="http://tempuri.org/IGradFilmaService/obrisiFilmResponse")]
-        System.Threading.Tasks.Task obrisiFilmAsync(GradFilmaModel.Film film);
+        System.Threading.Tasks.Task obrisiFilmAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/dajKorisnika", ReplyAction="http://tempuri.org/IGradFilmaService/dajKorisnikaResponse")]
         GradFilmaModel.Korisnik dajKorisnika(string username);
@@ -86,6 +86,24 @@ namespace GradFIlmaProjekat.ServiceGradFilma {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/dajSjedistaSale", ReplyAction="http://tempuri.org/IGradFilmaService/dajSjedistaSaleResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<GradFilmaModel.Sjediste>> dajSjedistaSaleAsync(int brojSale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/zauzmiSjediste", ReplyAction="http://tempuri.org/IGradFilmaService/zauzmiSjedisteResponse")]
+        void zauzmiSjediste(int sjediste);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/zauzmiSjediste", ReplyAction="http://tempuri.org/IGradFilmaService/zauzmiSjedisteResponse")]
+        System.Threading.Tasks.Task zauzmiSjedisteAsync(int sjediste);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/editujFIlm", ReplyAction="http://tempuri.org/IGradFilmaService/editujFIlmResponse")]
+        void editujFIlm(int id, GradFilmaModel.Film filmM);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/editujFIlm", ReplyAction="http://tempuri.org/IGradFilmaService/editujFIlmResponse")]
+        System.Threading.Tasks.Task editujFIlmAsync(int id, GradFilmaModel.Film filmM);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/dodajProjekciju", ReplyAction="http://tempuri.org/IGradFilmaService/dodajProjekcijuResponse")]
+        void dodajProjekciju(GradFilmaModel.Projekcija projekcija);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGradFilmaService/dodajProjekciju", ReplyAction="http://tempuri.org/IGradFilmaService/dodajProjekcijuResponse")]
+        System.Threading.Tasks.Task dodajProjekcijuAsync(GradFilmaModel.Projekcija projekcija);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -155,12 +173,12 @@ namespace GradFIlmaProjekat.ServiceGradFilma {
             return base.Channel.dodajFIlmAsync(film);
         }
         
-        public void obrisiFilm(GradFilmaModel.Film film) {
-            base.Channel.obrisiFilm(film);
+        public void obrisiFilm(int id) {
+            base.Channel.obrisiFilm(id);
         }
         
-        public System.Threading.Tasks.Task obrisiFilmAsync(GradFilmaModel.Film film) {
-            return base.Channel.obrisiFilmAsync(film);
+        public System.Threading.Tasks.Task obrisiFilmAsync(int id) {
+            return base.Channel.obrisiFilmAsync(id);
         }
         
         public GradFilmaModel.Korisnik dajKorisnika(string username) {
@@ -209,6 +227,30 @@ namespace GradFIlmaProjekat.ServiceGradFilma {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<GradFilmaModel.Sjediste>> dajSjedistaSaleAsync(int brojSale) {
             return base.Channel.dajSjedistaSaleAsync(brojSale);
+        }
+        
+        public void zauzmiSjediste(int sjediste) {
+            base.Channel.zauzmiSjediste(sjediste);
+        }
+        
+        public System.Threading.Tasks.Task zauzmiSjedisteAsync(int sjediste) {
+            return base.Channel.zauzmiSjedisteAsync(sjediste);
+        }
+        
+        public void editujFIlm(int id, GradFilmaModel.Film filmM) {
+            base.Channel.editujFIlm(id, filmM);
+        }
+        
+        public System.Threading.Tasks.Task editujFIlmAsync(int id, GradFilmaModel.Film filmM) {
+            return base.Channel.editujFIlmAsync(id, filmM);
+        }
+        
+        public void dodajProjekciju(GradFilmaModel.Projekcija projekcija) {
+            base.Channel.dodajProjekciju(projekcija);
+        }
+        
+        public System.Threading.Tasks.Task dodajProjekcijuAsync(GradFilmaModel.Projekcija projekcija) {
+            return base.Channel.dodajProjekcijuAsync(projekcija);
         }
     }
 }

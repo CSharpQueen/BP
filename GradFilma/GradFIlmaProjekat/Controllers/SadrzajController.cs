@@ -59,10 +59,7 @@ namespace GradFIlmaProjekat.Controllers
         // GET: Novost/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             var client = new GradFIlmaProjekat.ServiceGradFilma.GradFilmaServiceClient();
             GradFilmaModel.Film film = client.dajFilm(id);
 
@@ -75,18 +72,15 @@ namespace GradFIlmaProjekat.Controllers
         }
 
         // POST: Novost/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "NovostId,Naslov,Oblast,Datum,Sadrzaj,Detaljnije")] Novost novost)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(novost).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(novost);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, GradFilmaModel.Film filmM)
+        {
+            var client = new GradFIlmaProjekat.ServiceGradFilma.GradFilmaServiceClient();
+            client.editujFIlm(id, filmM);
+            GradFilmaModel.Film film = client.dajFilm(id);
+            return View(film);
+        }
 
         // GET: Novost/Delete/5
         public ActionResult Delete(int id)
@@ -111,19 +105,34 @@ namespace GradFIlmaProjekat.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var client = new GradFIlmaProjekat.ServiceGradFilma.GradFilmaServiceClient();
-            GradFilmaModel.Film film = client.dajFilm(id);
+            //GradFilmaModel.Film film = client.dajFilm(id);
 
-            if (film.naziv == null)
-            {
-                return HttpNotFound();
-            }
-            client.obrisiFilm(film);
+            //if (film.naziv == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            client.obrisiFilm(id);
             return RedirectToAction("Index");
         }
 
+        public ActionResult CreateProjekcija()
+        {
+            return View();
+        }
 
-
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateProjekcija(GradFilmaModel.Projekcija projekcija)
+        {
+            if (ModelState.IsValid)
+            {
+                var client = new GradFIlmaProjekat.ServiceGradFilma.GradFilmaServiceClient();
+                client.dodajProjekciju(projekcija);
+                client.Close();
+                return RedirectToAction("Index");
+            }
+            return View(projekcija);
+        }
 
 
     }
